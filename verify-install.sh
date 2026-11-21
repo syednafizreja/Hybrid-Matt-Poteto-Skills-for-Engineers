@@ -25,6 +25,11 @@ check_file "$REPO_ROOT/FEATURE_MAP.md" "FEATURE_MAP.md"
 check_file "$REPO_ROOT/verify-setup.sh" "verify-setup.sh"
 check_file "$REPO_ROOT/.grok/skills/hybrid-build/SKILL.md" ".grok/skills/hybrid-build/SKILL.md"
 check_file "$REPO_ROOT/scripts/check-boundaries.mjs" "scripts/check-boundaries.mjs"
+check_file "$REPO_ROOT/docs/agents/eval-rubric-template.md" "docs/agents/eval-rubric-template.md"
+check_file "$REPO_ROOT/grokbot-cloud/01-grokbot-private-skills-import.md" "grokbot-cloud/01-grokbot-private-skills-import.md"
+check_file "$REPO_ROOT/grokbot-cloud/02-bot-roster-profiles.md" "grokbot-cloud/02-bot-roster-profiles.md"
+check_file "$REPO_ROOT/grokbot-cloud/03-routines.md" "grokbot-cloud/03-routines.md"
+check_file "$REPO_ROOT/grokbot-cloud/04-trust-ladder.md" "grokbot-cloud/04-trust-ladder.md"
 
 while IFS= read -r skill_dir; do
   skill="$(basename "$skill_dir")"

@@ -69,7 +69,7 @@ for skill_dir in "${KIT_DIR}"/skills/*; do
   copy_tree "${skill_dir}" "${TARGET_DIR}/.agents/skills/${skill}"
 done
 
-for sub in .grok .vscode docs scripts .github; do
+for sub in .grok .vscode docs scripts .github grokbot-cloud; do
   copy_tree "${KIT_DIR}/${sub}" "${TARGET_DIR}/${sub}"
 done
 

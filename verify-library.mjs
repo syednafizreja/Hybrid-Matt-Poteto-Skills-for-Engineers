@@ -15,6 +15,15 @@ for (const skill of manifest.skills) {
   }
 }
 
+for (const guide of manifest.guides ?? []) {
+  if (fs.existsSync(path.join(root, guide))) {
+    console.log(`[OK] ${guide}`);
+  } else {
+    console.error(`[FAIL] Missing: ${guide}`);
+    failures++;
+  }
+}
+
 for (const file of [
   "AGENTS.md",
   "CLAUDE.md",

@@ -81,6 +81,7 @@ You can start with any skill that matches the work. For a small bug, use `tdd` d
 | `AGENTS.md`, `CLAUDE.md` | Agent operating rules and instructions |
 | `GLOSSARY.md`, `FEATURE_MAP.md` | Domain language and repository navigation templates |
 | `docs/`, `.vscode/`, `.github/`, `scripts/` | ADR and agent docs, editor settings, PR/CI templates, and boundary checks |
+| `grokbot-cloud/` | Optional Grok Bot private-skill setup, bot profiles, routines, and trust ladder |
 | `verify-setup.sh` | Post-install audit for skills and repository configuration |
 | `.agents/hybrid-library.json` | Library name, version, sources, and skill inventory |
 

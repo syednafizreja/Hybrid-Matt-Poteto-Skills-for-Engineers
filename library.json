@@ -6,6 +6,13 @@
     "mattpocock/skills",
     "ericlitman/open-pstack"
   ],
+  "guides": [
+    "docs/agents/eval-rubric-template.md",
+    "grokbot-cloud/01-grokbot-private-skills-import.md",
+    "grokbot-cloud/02-bot-roster-profiles.md",
+    "grokbot-cloud/03-routines.md",
+    "grokbot-cloud/04-trust-ladder.md"
+  ],
   "skills": [
     "hybrid",
     "hybrid-init",
