@@ -4,7 +4,7 @@
   <p>Think clearly. Build in small steps. Prove it works.</p>
   <p>
     <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-14b8a6.svg"></a>
-    <a href="https://github.com/syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers"><img alt="Works with agent skill folders" src="https://img.shields.io/badge/agent%20skills-ready-2563eb.svg"></a>
+    <a href="https://agentskills.io"><img alt="Agent Skills compatible" src="https://img.shields.io/badge/Agent%20Skills-compatible-2563eb.svg"></a>
   </p>
 </div>
 
@@ -14,21 +14,44 @@
 
 ## About
 
-Hybrid Matt + Poteto Skills is an open-source toolkit for making AI-assisted software work more reliable. It brings practical engineering methods into one reusable library so teams and independent developers can investigate with evidence, build in focused steps, and verify changes against real applications.
+Hybrid Matt + Poteto Skills is an open-source toolkit for making AI-assisted software work more reliable. Its portable `SKILL.md` files can be installed into Claude Code, Codex, Grok Build, GitHub Copilot, Gemini CLI, Cursor, and 70+ other supported agents through the Skills CLI. Use one skill or the whole library, with no single AI provider required.
 
 ## One workflow. Better engineering.
 
 Hybrid combines repository guardrails and runtime proof with Matt Pocock's deep-module and testing practices, plus Poteto's model routing and isolated execution playbooks.
 
-Use the skills individually, or follow the end-to-end path from investigation to a review-ready change. The library works with agent tools that discover skills from `.agents/skills`; it also installs the Hybrid workflow skills into `.grok/skills`.
+Use any skill on its own or follow the end-to-end path from investigation to a review-ready change. Skills follow the open [Agent Skills](https://agentskills.io) format. Host-specific interfaces and optional features can vary, but the core skill instructions are portable.
 
-## Get started
+## Install for your AI agent
 
-By default, the installer skips files that already exist in the target repository. Use `--force` to overwrite the included files, including `AGENTS.md` and matching skill files. Back up local customizations before forcing an update.
+Install skills into your project with [Vercel's Skills CLI](https://github.com/vercel-labs/skills). It prompts you to choose skills and compatible agents, so you can install only what fits your workflow:
 
-Prefer a ready-to-extract VS Code + Grok starter kit? Download the [34-file factory ZIP](grokbot-vscode-hybrid-factory.zip). It includes the Hybrid skills, setup templates, CI files, and optional Grok Bot cloud guides.
+```bash
+npx skills@latest add syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers
+```
 
-Clone this library, then install it into an existing repository:
+Install every skill to every supported agent with `--all`, or install selected skills globally with `-g`:
+
+```bash
+npx skills@latest add syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers --all
+npx skills@latest add syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers -g
+```
+
+To explicitly install one skill for one agent:
+
+```bash
+npx skills@latest add syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers --skill tdd --agent codex
+```
+
+The Skills CLI requires Node.js 22.20 or later. See its [supported agent list](https://github.com/vercel-labs/skills/blob/main/docs/agents.md) for current integrations and install locations.
+
+## Install the full factory
+
+The full factory adds repository guidance, setup templates, VS Code tasks, CI checks, and optional Grok Bot cloud guides alongside the skills. By default, its installer skips files already present. Use `--force` to overwrite included files, including `AGENTS.md`; back up local customizations first.
+
+Prefer a ready-to-extract VS Code + Grok starter kit? Download the [34-file factory ZIP](grokbot-vscode-hybrid-factory.zip).
+
+Clone this library, then install into an existing repository:
 
 ```bash
 git clone https://github.com/syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers.git
@@ -36,19 +59,13 @@ cd Hybrid-Matt-Poteto-Skills-for-Engineers
 bash ./install.sh /path/to/your/repository
 ```
 
-To overwrite existing files:
-
-```bash
-bash ./install.sh /path/to/your/repository --force
-```
-
-To install into the current directory of an existing project, run this from that project:
+To install into the current directory of an existing project, run the script from that project:
 
 ```bash
 bash /path/to/Hybrid-Matt-Poteto-Skills-for-Engineers/install.sh .
 ```
 
-On Windows, run these commands from **Git Bash** and use a Git Bash path such as `/c/Users/you/source/project`.
+On Windows, run the factory installer from **Git Bash** and use a Git Bash path such as `/c/Users/you/source/project`. The Skills CLI also installs skills into each selected agent's native folder.
 
 Verify the package, then run the installed setup audit from the target repository:
 
@@ -76,13 +93,11 @@ You can start with any skill that matches the work. For a small bug, use `tdd` d
 
 ## What gets installed
 
-| Destination | Contents |
+| Installer | Contents |
 |---|---|
-| `.agents/skills/` | All library skills, including the Hybrid workflow, specialist skills, and Poteto playbooks |
-| `.grok/skills/` | Hybrid workflow and specialist skills for Grok |
-| `AGENTS.md`, `CLAUDE.md` | Agent operating rules and instructions |
-| `GLOSSARY.md`, `FEATURE_MAP.md` | Domain language and repository navigation templates |
-| `docs/`, `.vscode/`, `.github/`, `scripts/` | ADR and agent docs, editor settings, PR/CI templates, and boundary checks |
+| Skills CLI | Selected skills in the native directories for one or more supported agents |
+| `install.sh` | Full factory files, all skills under `.agents/skills/`, and Grok skill copies under `.grok/skills/` |
+| Full factory files | `AGENTS.md`, `CLAUDE.md`, glossary and feature-map templates, docs, VS Code tasks, CI templates, and boundary checks |
 | `grokbot-cloud/` | Optional Grok Bot private-skill setup, bot profiles, routines, and trust ladder |
 | `verify-setup.sh` | Post-install audit for skills and repository configuration |
 | `.agents/hybrid-library.json` | Library name, version, sources, and skill inventory |
@@ -91,15 +106,14 @@ The specialist collection includes `codebase-design`, `diagnosing-bugs`, `tdd`, 
 
 ## Update the skills
 
-Pull the latest library changes, then run the installer again for each target repository:
+For skills installed with the Skills CLI, check for and apply updates with:
 
 ```bash
-cd Hybrid-Matt-Poteto-Skills-for-Engineers
-git pull
-bash ./install.sh /path/to/your/repository
+npx skills@latest check
+npx skills@latest update
 ```
 
-The installer skips existing files by default. Pass `--force` to replace matching files when updating.
+To update the full factory, pull the latest library and rerun `install.sh`. It skips existing files by default; pass `--force` to replace matching files.
 
 ## Contributing
 
