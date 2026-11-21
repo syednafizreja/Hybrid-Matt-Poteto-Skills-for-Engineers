@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Hybrid: Verify Setup",
+      "type": "shell",
+      "command": "./verify-setup.sh",
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Hybrid: Layer-2 Boundary & Anti-Slop Check",
+      "type": "shell",
+      "command": "node scripts/check-boundaries.mjs",
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Hybrid: Prune Agent Git Worktrees",
+      "type": "shell",
+      "command": "git worktree prune && rm -rf .worktrees/*",
+      "problemMatcher": []
+    }
+  ]
+}

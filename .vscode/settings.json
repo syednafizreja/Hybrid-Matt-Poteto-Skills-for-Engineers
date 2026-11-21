@@ -1,0 +1,23 @@
+{
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.worktrees/**": true
+  },
+  "search.exclude": {
+    "**/.worktrees/**": true,
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/build/**": true
+  },
+  "files.associations": {
+    "AGENTS.md": "markdown",
+    "GLOSSARY.md": "markdown",
+    "FEATURE_MAP.md": "markdown",
+    "SKILL.md": "markdown"
+  },
+  "terminal.integrated.scrollback": 10000,
+  "git.autofetch": true,
+  "git.pruneOnFetch": true
+}

@@ -24,7 +24,7 @@ Use the skills individually, or follow the end-to-end path from investigation to
 
 ## Get started
 
-> **Before installing:** the installer replaces the target's root `AGENTS.md` and any same-named skill folders in `.agents/skills` or `.grok/skills`. Back up custom versions first.
+By default, the installer skips files that already exist in the target repository. Use `--force` to overwrite the included files, including `AGENTS.md` and matching skill files. Back up local customizations before forcing an update.
 
 Clone this library, then install it into an existing repository:
 
@@ -34,23 +34,29 @@ cd Hybrid-Matt-Poteto-Skills-for-Engineers
 bash ./install.sh /path/to/your/repository
 ```
 
-For example, to install into the current directory of a repository:
+To overwrite existing files:
 
 ```bash
-bash ./install.sh .
+bash ./install.sh /path/to/your/repository --force
+```
+
+To install into the current directory of an existing project, run this from that project:
+
+```bash
+bash /path/to/Hybrid-Matt-Poteto-Skills-for-Engineers/install.sh .
 ```
 
 On Windows, run these commands from **Git Bash** and use a Git Bash path such as `/c/Users/you/source/project`.
 
-Confirm the package and installed entry points:
+Verify the package, then run the installed setup audit from the target repository:
 
 ```bash
 bash ./verify-install.sh
-test -f /path/to/your/repository/.agents/skills/hybrid/SKILL.md
-test -f /path/to/your/repository/.grok/skills/hybrid-build/SKILL.md
+cd /path/to/your/repository
+bash ./verify-setup.sh
 ```
 
-`verify-install.sh` checks the cloned library package. The two `test` commands check that the skills landed in the target repository.
+`verify-install.sh` checks the library package. `verify-setup.sh` checks the installed skills, docs, VS Code settings, runtime prerequisites, and boundary script.
 
 ## The workflow
 
@@ -71,8 +77,11 @@ You can start with any skill that matches the work. For a small bug, use `tdd` d
 | Destination | Contents |
 |---|---|
 | `.agents/skills/` | All library skills, including the Hybrid workflow, specialist skills, and Poteto playbooks |
-| `.grok/skills/` | The seven `hybrid-*` workflow skills and `verify-app` |
-| `AGENTS.md` | The library's repository-level engineering rules |
+| `.grok/skills/` | Hybrid workflow and specialist skills for Grok |
+| `AGENTS.md`, `CLAUDE.md` | Agent operating rules and instructions |
+| `GLOSSARY.md`, `FEATURE_MAP.md` | Domain language and repository navigation templates |
+| `docs/`, `.vscode/`, `.github/`, `scripts/` | ADR and agent docs, editor settings, PR/CI templates, and boundary checks |
+| `verify-setup.sh` | Post-install audit for skills and repository configuration |
 | `.agents/hybrid-library.json` | Library name, version, sources, and skill inventory |
 
 The specialist collection includes `codebase-design`, `diagnosing-bugs`, `tdd`, `unslop`, `handoff`, `poteto-mode`, `setup-pstack`, and `verify-app`.
@@ -87,7 +96,7 @@ git pull
 bash ./install.sh /path/to/your/repository
 ```
 
-The installer replaces matching installed skill folders and `AGENTS.md`, so preserve any local edits before updating.
+The installer skips existing files by default. Pass `--force` to replace matching files when updating.
 
 ## Contributing
 

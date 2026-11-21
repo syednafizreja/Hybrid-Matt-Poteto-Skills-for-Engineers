@@ -1,44 +1,98 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-LIB_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+KIT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TARGET_DIR="${1:-}"
+FORCE="${2:-}"
 
-if [[ -z "$TARGET_DIR" ]]; then
-  echo "Usage: ./install.sh /path/to/repository"
+if [[ -z "${TARGET_DIR}" || $# -gt 2 ]]; then
+  echo "Usage: $0 /path/to/target-repo [--force]"
   exit 1
 fi
 
-if [[ ! -d "$TARGET_DIR" ]]; then
-  echo "Error: target directory does not exist: $TARGET_DIR"
+if [[ "${FORCE}" != "" && "${FORCE}" != "--force" ]]; then
+  echo "Error: the only supported option is --force."
+  echo "Usage: $0 /path/to/target-repo [--force]"
   exit 1
 fi
 
-TARGET_DIR="$(cd "$TARGET_DIR" && pwd)"
+if [[ ! -d "${TARGET_DIR}" ]]; then
+  echo "Error: target directory '${TARGET_DIR}' does not exist."
+  exit 1
+fi
 
-mkdir -p "$TARGET_DIR/.agents/skills" "$TARGET_DIR/.grok/skills"
+TARGET_DIR="$(cd "${TARGET_DIR}" && pwd)"
 
-copy_skill() {
-  local skill="$1"
-  local destination="$TARGET_DIR/.agents/skills/$skill"
-  rm -rf "$destination"
-  cp -R "$LIB_DIR/skills/$skill" "$destination"
-  echo "  [copy] .agents/skills/$skill"
+if [[ "${KIT_DIR}" == "${TARGET_DIR}" ]]; then
+  echo "Error: target directory is the template kit itself. Pass a project repository."
+  exit 1
+fi
+
+copy_item() {
+  local src="$1"
+  local dst="$2"
+  mkdir -p "$(dirname "${dst}")"
+  if [[ -f "${dst}" && "${FORCE}" != "--force" ]]; then
+    echo "  [skip] ${dst#${TARGET_DIR}/} (already exists; pass --force to overwrite)"
+  else
+    cp "${src}" "${dst}"
+    echo "  [copy] ${dst#${TARGET_DIR}/}"
+  fi
 }
 
-for skill_dir in "$LIB_DIR"/skills/*; do
-  [[ -d "$skill_dir" ]] || continue
-  copy_skill "$(basename "$skill_dir")"
+copy_tree() {
+  local source="$1"
+  local destination="$2"
+  local file
+  local rel
+
+  if [[ ! -d "${source}" ]]; then
+    echo "Error: package directory is missing: ${source}" >&2
+    return 1
+  fi
+
+  while IFS= read -r -d '' file; do
+    rel="${file#${source}/}"
+    copy_item "${file}" "${destination}/${rel}"
+  done < <(find "${source}" -type f -print0)
+}
+
+echo "==> Installing Hybrid Matt + Poteto Skills into: ${TARGET_DIR}"
+
+for root_file in AGENTS.md CLAUDE.md GLOSSARY.md FEATURE_MAP.md verify-setup.sh; do
+  copy_item "${KIT_DIR}/${root_file}" "${TARGET_DIR}/${root_file}"
 done
 
-for skill in hybrid-init hybrid-investigate hybrid-grill hybrid-plan hybrid-build hybrid-ship hybrid-retro verify-app; do
-  rm -rf "$TARGET_DIR/.grok/skills/$skill"
-  cp -R "$LIB_DIR/skills/$skill" "$TARGET_DIR/.grok/skills/$skill"
-  echo "  [copy] .grok/skills/$skill"
+for skill_dir in "${KIT_DIR}"/skills/*; do
+  [[ -d "${skill_dir}" ]] || continue
+  skill="$(basename "${skill_dir}")"
+  copy_tree "${skill_dir}" "${TARGET_DIR}/.agents/skills/${skill}"
 done
 
-cp "$LIB_DIR/AGENTS.md" "$TARGET_DIR/AGENTS.md"
-cp "$LIB_DIR/library.json" "$TARGET_DIR/.agents/hybrid-library.json"
+for sub in .grok .vscode docs scripts .github; do
+  copy_tree "${KIT_DIR}/${sub}" "${TARGET_DIR}/${sub}"
+done
+
+copy_item "${KIT_DIR}/library.json" "${TARGET_DIR}/.agents/hybrid-library.json"
+
+if [[ -f "${TARGET_DIR}/verify-setup.sh" ]]; then
+  chmod +x "${TARGET_DIR}/verify-setup.sh"
+fi
+
+if [[ -f "${TARGET_DIR}/scripts/check-boundaries.mjs" ]]; then
+  chmod +x "${TARGET_DIR}/scripts/check-boundaries.mjs"
+fi
+
+if [[ -f "${TARGET_DIR}/.gitignore" ]]; then
+  if ! grep -q "^\.worktrees/" "${TARGET_DIR}/.gitignore"; then
+    printf "\n# Isolated agent git worktrees\n.worktrees/\n" >> "${TARGET_DIR}/.gitignore"
+    echo "  [edit] Added .worktrees/ to .gitignore"
+  fi
+fi
 
 echo ""
-echo "Installed Hybrid Matt + Poteto Skills into: $TARGET_DIR"
+echo "Installation complete!"
+echo "Next steps inside VS Code:"
+echo "  1. Open ${TARGET_DIR} in VS Code"
+echo "  2. Run ./verify-setup.sh in the VS Code terminal"
+echo "  3. Open Grok Bot / Grok Build and run: /hybrid-init"

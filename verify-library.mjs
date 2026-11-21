@@ -17,13 +17,26 @@ for (const skill of manifest.skills) {
 
 for (const file of [
   "AGENTS.md",
+  "CLAUDE.md",
+  "GLOSSARY.md",
+  "FEATURE_MAP.md",
   "README.md",
   "LICENSE",
   "THIRD_PARTY_NOTICES.md",
   "install.sh",
   "verify-install.sh",
+  "verify-setup.sh",
   "CREDITS.md",
   "assets/hybrid-hero.svg",
+  ".grok/skills/hybrid-build/SKILL.md",
+  ".grok/skills/verify-app/SKILL.md",
+  ".vscode/settings.json",
+  ".vscode/tasks.json",
+  "docs/adr/0000-adr-template.md",
+  "docs/agents/codingstandards.md",
+  ".github/pull_request_template.md",
+  ".github/workflows/deterministic-ci.yml",
+  "scripts/check-boundaries.mjs",
 ]) {
   if (fs.existsSync(path.join(root, file))) {
     console.log(`[OK] ${file}`);
