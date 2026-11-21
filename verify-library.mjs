@@ -46,7 +46,16 @@ for (const file of [
   "docs/agents/codingstandards.md",
   ".github/pull_request_template.md",
   ".github/workflows/deterministic-ci.yml",
+  ".github/workflows/upstream-sync.yml",
+  ".github/UPSTREAM_SYNC.md",
   "scripts/check-boundaries.mjs",
+  "tools/maintainers/upstream-sources.json",
+  "tools/maintainers/upstream-state.json",
+  "tools/maintainers/upstream-sync-core.mjs",
+  "tools/maintainers/sync-upstream-skills.mjs",
+  "tools/maintainers/build-factory-zip.py",
+  "tools/maintainers/upstream-sync.test.mjs",
+  "upstream-review/README.md",
 ]) {
   if (fs.existsSync(path.join(root, file))) {
     console.log(`[OK] ${file}`);

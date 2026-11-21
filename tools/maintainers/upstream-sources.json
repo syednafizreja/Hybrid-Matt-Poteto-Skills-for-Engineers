@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "repository": "mattpocock/skills",
+      "skillRoots": [
+        "skills/engineering",
+        "skills/productivity"
+      ],
+      "sync": [
+        {
+          "path": "skills/engineering/codebase-design",
+          "destination": "skills/codebase-design",
+          "grokMirror": true
+        },
+        {
+          "path": "skills/engineering/diagnosing-bugs",
+          "destination": "skills/diagnosing-bugs"
+        },
+        {
+          "path": "skills/productivity/handoff",
+          "destination": "skills/handoff",
+          "grokMirror": true
+        },
+        {
+          "path": "skills/engineering/setup-matt-pocock-skills",
+          "destination": "skills/setup-matt-pocock-skills"
+        }
+      ],
+      "reviewOnly": [
+        {
+          "path": "skills/engineering/tdd/SKILL.md",
+          "skill": "tdd",
+          "reason": "The published TDD skill currently mirrors Open PStack. Review Matt's version before changing that choice."
+        }
+      ]
+    },
+    {
+      "repository": "ericlitman/open-pstack",
+      "skillRoots": [
+        "plugins/pstack/skills"
+      ],
+      "sync": [
+        {
+          "path": "plugins/pstack/skills/setup-pstack",
+          "destination": "skills/setup-pstack"
+        },
+        {
+          "path": "plugins/pstack/skills/poteto-mode",
+          "destination": "skills/poteto-mode"
+        },
+        {
+          "path": "plugins/pstack/skills/unslop",
+          "destination": "skills/unslop",
+          "grokMirror": true
+        },
+        {
+          "path": "plugins/pstack/skills/tdd",
+          "destination": "skills/tdd",
+          "grokMirror": true
+        }
+      ],
+      "reviewOnly": []
+    }
+  ]
+}

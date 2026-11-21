@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "sources": {
+    "mattpocock/skills": {
+      "commit": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    "ericlitman/open-pstack": {
+      "commit": "faf512125b11f4a30f55c4eaf8a709a890668406"
+    }
+  }
+}

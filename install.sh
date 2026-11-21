@@ -69,8 +69,12 @@ for skill_dir in "${KIT_DIR}"/skills/*; do
   copy_tree "${skill_dir}" "${TARGET_DIR}/.agents/skills/${skill}"
 done
 
-for sub in .grok .vscode docs scripts .github grokbot-cloud; do
+for sub in .grok .vscode docs scripts grokbot-cloud; do
   copy_tree "${KIT_DIR}/${sub}" "${TARGET_DIR}/${sub}"
+done
+
+for github_file in .github/pull_request_template.md .github/workflows/deterministic-ci.yml; do
+  copy_item "${KIT_DIR}/${github_file}" "${TARGET_DIR}/${github_file}"
 done
 
 copy_item "${KIT_DIR}/library.json" "${TARGET_DIR}/.agents/hybrid-library.json"

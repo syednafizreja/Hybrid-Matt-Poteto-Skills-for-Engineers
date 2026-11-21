@@ -57,7 +57,7 @@ The installer skips existing files. Use `--force` to overwrite them. On Windows,
 
 ## Update
 
-Run `npx skills@latest update` for CLI-installed skills. For the full kit, pull the latest version and rerun `install.sh`.
+The weekly [upstream sync](https://github.com/syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers/blob/main/.github/UPSTREAM_SYNC.md) opens a draft PR when source skills change. Review and merge it to integrate updates; nothing merges automatically. Run `npx skills@latest update` for CLI-installed skills.
 
 ---
 
