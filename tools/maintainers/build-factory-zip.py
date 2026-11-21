@@ -55,6 +55,15 @@ def package_files():
     return sorted(files, key=lambda path: path.relative_to(ROOT).as_posix())
 
 
+def archive_content(path):
+    content = path.read_bytes()
+    try:
+        content.decode("utf-8")
+    except UnicodeDecodeError:
+        return content
+    return content.replace(b"\r\n", b"\n")
+
+
 def write_archive(files):
     with zipfile.ZipFile(ARCHIVE_PATH, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for path in files:
@@ -65,7 +74,7 @@ def write_archive(files):
             info.create_system = 3
             mode = 0o100755 if path.suffix in {".sh", ".mjs"} else 0o100644
             info.external_attr = mode << 16
-            archive.writestr(info, path.read_bytes())
+            archive.writestr(info, archive_content(path))
 
 
 def archive_is_current(files):
@@ -84,7 +93,10 @@ def archive_is_current(files):
                 name = f"{PACKAGE_ROOT}/{path.relative_to(ROOT).as_posix()}"
                 info = archive.getinfo(name)
                 expected_mode = 0o755 if path.suffix in {".sh", ".mjs"} else 0o644
-                if archive.read(name) != path.read_bytes() or (info.external_attr >> 16) & 0o777 != expected_mode:
+                if (
+                    archive.read(name) != archive_content(path)
+                    or (info.external_attr >> 16) & 0o777 != expected_mode
+                ):
                     return False
     except (OSError, zipfile.BadZipFile):
         return False
