@@ -77,7 +77,36 @@ for github_file in .github/pull_request_template.md .github/workflows/determinis
   copy_item "${KIT_DIR}/${github_file}" "${TARGET_DIR}/${github_file}"
 done
 
-copy_item "${KIT_DIR}/library.json" "${TARGET_DIR}/.agents/hybrid-library.json"
+if [[ -f "${KIT_DIR}/library.json" ]]; then
+  copy_item "${KIT_DIR}/library.json" "${TARGET_DIR}/.agents/hybrid-library.json"
+fi
+
+if [[ -f "${KIT_DIR}/THIRD_PARTY_NOTICES.md" ]]; then
+  copy_item "${KIT_DIR}/THIRD_PARTY_NOTICES.md" "${TARGET_DIR}/THIRD_PARTY_NOTICES.md"
+else
+  notices_path="${TARGET_DIR}/THIRD_PARTY_NOTICES.md"
+  if [[ -f "${notices_path}" && "${FORCE}" != "--force" ]]; then
+    echo "  [skip] THIRD_PARTY_NOTICES.md (already exists; pass --force to overwrite)"
+  else
+    temporary="$(mktemp "${TARGET_DIR}/.third-party-notices.XXXXXX")"
+    if ! awk '
+      /^<!-- HYBRID-THIRD-PARTY-NOTICES:BEGIN -->$/ { copying=1; next }
+      /^<!-- HYBRID-THIRD-PARTY-NOTICES:END -->$/ { copying=0 }
+      copying
+    ' "${KIT_DIR}/README.md" > "${temporary}"; then
+      rm -f -- "${temporary}"
+      echo "Error: unable to extract third-party notices from README.md." >&2
+      exit 1
+    fi
+    if [[ ! -s "${temporary}" ]]; then
+      rm -f -- "${temporary}"
+      echo "Error: third-party notice section is missing from README.md." >&2
+      exit 1
+    fi
+    mv -- "${temporary}" "${notices_path}"
+    echo "  [copy] THIRD_PARTY_NOTICES.md"
+  fi
+fi
 
 if [[ -f "${TARGET_DIR}/verify-setup.sh" ]]; then
   chmod +x "${TARGET_DIR}/verify-setup.sh"
@@ -99,7 +128,9 @@ echo "Installation complete!"
 echo "Next steps:"
 echo "  1. Open ${TARGET_DIR} in your preferred editor or agent workspace"
 echo "  2. Run ./verify-setup.sh from a Bash terminal"
-echo "  3. In your AI coding agent, invoke the hybrid-init skill"
+echo "  3. In Grok Bot for VS Code, invoke /hybrid-init"
 echo ""
-echo "To install skills into other supported agents' native folders, run from the target repository:"
-echo "  npx skills@latest add syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers"
+if [[ -d "${KIT_DIR}/skills" && -f "${KIT_DIR}/library.json" ]]; then
+  echo "To install skills into other supported agents' native folders, run from the target repository:"
+  echo "  npx skills@latest add syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers"
+fi

@@ -69,6 +69,7 @@ REQUIRED_FILES=(
   "CLAUDE.md"
   "GLOSSARY.md"
   "FEATURE_MAP.md"
+  "THIRD_PARTY_NOTICES.md"
   "docs/adr/0000-adr-template.md"
   "docs/agents/codingstandards.md"
   "docs/agents/issue-tracker.md"

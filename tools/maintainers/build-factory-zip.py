@@ -1,54 +1,65 @@
 import argparse
 import json
 import pathlib
+import posixpath
+import re
 import subprocess
 import tempfile
+from urllib.parse import urlsplit
 import zipfile
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 ARCHIVE_PATH = ROOT / "grokbot-vscode-hybrid-factory.zip"
 PACKAGE_ROOT = "grokbot-vscode-hybrid-factory"
-PACKAGE_PATHS = (
+GROK_SKILLS = (
+    "hybrid-init",
+    "hybrid-investigate",
+    "hybrid-grill",
+    "hybrid-plan",
+    "hybrid-build",
+    "hybrid-ship",
+    "hybrid-retro",
+    "verify-app",
+    "codebase-design",
+    "tdd",
+    "unslop",
+    "handoff",
+)
+PACKAGE_FILES = (
+    "README.md",
+    "install.sh",
+    "verify-setup.sh",
     "AGENTS.md",
     "CLAUDE.md",
     "GLOSSARY.md",
     "FEATURE_MAP.md",
-    "README.md",
-    "LICENSE",
-    "THIRD_PARTY_NOTICES.md",
-    "library.json",
-    "install.sh",
-    "verify-setup.sh",
-    "assets/hybrid-hero.svg",
-    "skills",
-    ".grok",
-    ".vscode",
-    "docs",
-    "grokbot-cloud",
-    "scripts/check-boundaries.mjs",
-    ".github/pull_request_template.md",
-    ".github/workflows/deterministic-ci.yml",
-)
-REQUIRED_FILES = (
-    "install.sh",
-    "verify-setup.sh",
-    "library.json",
-    "skills/tdd/SKILL.md",
     ".vscode/settings.json",
     ".vscode/tasks.json",
+    *(f".grok/skills/{skill}/SKILL.md" for skill in GROK_SKILLS),
+    "scripts/check-boundaries.mjs",
+    "docs/adr/0000-adr-template.md",
+    "docs/agents/codingstandards.md",
+    "docs/agents/issue-tracker.md",
+    "docs/agents/triage-labels.md",
+    "docs/agents/model-routing.md",
+    "docs/agents/eval-rubric-template.md",
+    "grokbot-cloud/01-grokbot-private-skills-import.md",
+    "grokbot-cloud/02-bot-roster-profiles.md",
+    "grokbot-cloud/03-routines.md",
+    "grokbot-cloud/04-trust-ladder.md",
     ".github/pull_request_template.md",
     ".github/workflows/deterministic-ci.yml",
 )
+EXPECTED_FILE_COUNT = 34
+MARKDOWN_LINK = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 
 
 def package_files():
     files = []
-    for item in PACKAGE_PATHS:
+    for item in PACKAGE_FILES:
         source = ROOT / item
-        if source.is_dir():
-            files.extend(path for path in source.rglob("*") if path.is_file())
-        elif source.is_file():
+        if source.is_file():
             files.append(source)
         else:
             raise FileNotFoundError(f"Required package input is missing: {item}")
@@ -109,9 +120,14 @@ def verify_archive(bash):
             raise ValueError("ZIP integrity check failed.")
 
         names = set(archive.namelist())
-        missing = {f"{PACKAGE_ROOT}/{path}" for path in REQUIRED_FILES} - names
-        if missing:
-            raise ValueError(f"ZIP is missing required files: {sorted(missing)}")
+        expected_names = {f"{PACKAGE_ROOT}/{path}" for path in PACKAGE_FILES}
+        if names != expected_names or len(names) != EXPECTED_FILE_COUNT:
+            missing = expected_names - names
+            unexpected = names - expected_names
+            raise ValueError(
+                f"ZIP must contain exactly {EXPECTED_FILE_COUNT} files; "
+                f"missing={sorted(missing)}, unexpected={sorted(unexpected)}"
+            )
         if any("/tools/maintainers/" in name or name.endswith("/.github/workflows/upstream-sync.yml") for name in names):
             raise ValueError("Maintainer-only automation must not be included in the factory ZIP.")
 
@@ -121,8 +137,21 @@ def verify_archive(bash):
                 if not (info.external_attr >> 16) & 0o111:
                     raise ValueError(f"Executable bit is missing: {name}")
 
-        for relative in (".vscode/settings.json", ".vscode/tasks.json", "library.json"):
+        for relative in (".vscode/settings.json", ".vscode/tasks.json"):
             json.loads(archive.read(f"{PACKAGE_ROOT}/{relative}").decode("utf-8"))
+
+        for relative in PACKAGE_FILES:
+            if not relative.startswith(".grok/skills/") or not relative.endswith("/SKILL.md"):
+                continue
+            content = archive.read(f"{PACKAGE_ROOT}/{relative}").decode("utf-8")
+            for raw_target in MARKDOWN_LINK.findall(content):
+                target = raw_target.strip().split()[0].strip("<>")
+                parsed = urlsplit(target)
+                if parsed.scheme or target.startswith("//") or not parsed.path:
+                    continue
+                resolved = posixpath.normpath(posixpath.join(posixpath.dirname(relative), parsed.path))
+                if resolved not in {file.removeprefix(f"{PACKAGE_ROOT}/") for file in names}:
+                    raise ValueError(f"Missing packaged skill reference: {relative} -> {target}")
 
         with tempfile.TemporaryDirectory(prefix="hybrid-factory-zip-") as temporary:
             for name in sorted(names):
