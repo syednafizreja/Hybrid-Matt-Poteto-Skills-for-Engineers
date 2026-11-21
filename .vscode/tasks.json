@@ -4,7 +4,10 @@
     {
       "label": "Hybrid: Verify Setup",
       "type": "shell",
-      "command": "./verify-setup.sh",
+      "command": "bash",
+      "args": [
+        "./verify-setup.sh"
+      ],
       "problemMatcher": [],
       "group": "test"
     },
@@ -19,9 +22,9 @@
       }
     },
     {
-      "label": "Hybrid: Prune Agent Git Worktrees",
+      "label": "Hybrid: Prune Stale Worktree Metadata",
       "type": "shell",
-      "command": "git worktree prune && rm -rf .worktrees/*",
+      "command": "git worktree prune",
       "problemMatcher": []
     }
   ]
