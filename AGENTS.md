@@ -1,4 +1,4 @@
-# Hybrid AI Engineering System — Operating Rules
+# Hybrid AI Engineering System v3 — Operating Rules
 
 This repository runs a unified **Matt Pocock + Lauren Tan** engineering workflow inside **VS Code + Grok Bot**.
 Our core objective: **less code, deeper modules, hard deterministic guardrails, real runtime proof, and fearless parallelism**.
@@ -22,6 +22,8 @@ Soft rules rot as repositories grow. Push every recurring invariant as far **up*
 - **Read Before Guessing (`/hybrid-investigate`):** Never claim a "smoking gun" or guess a root cause without reading the affected files, Git history, and live runtime behavior first.
 - **Prove It Works:** Verify fixes and features on the **exact surface** where the user experiences them. Include authentic failing -> passing output in the PR.
 - **Stay in the Smart Zone (`<150k` tokens):** Keep single-task sessions small and focused. If work exceeds one clean session, run `/hybrid-plan` to slice into `<150k`-token tracer-bullet tickets and run `/hybrid-build` in isolated Git worktrees (`.worktrees/`).
+- **Use high-signal context:** Skip filler; state exact paths, commands, decisions, and diffs. Read `GLOSSARY.md` and `FEATURE_MAP.md` before broad exploration.
+- **Spend tokens deliberately:** Run deterministic type, lint, test, and boundary checks before asking an agent to reason about failures they can detect directly.
 - **Sequence into Verifiable Units:** Ship small, atomic, revertible PRs (typically 50–600 lines) rather than monolithic diffs so `git history` stays clean and rollbacks are trivial.
 - **Subtract Before Adding (`unslop`):** Delete dead paths, duplicate helpers, and narrating AI comments instead of stacking defensive workarounds.
 - **Candor Over Sycophancy:** If a proposed scope or design does not earn its place, push back directly with concrete trade-offs.

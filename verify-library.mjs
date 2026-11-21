@@ -36,7 +36,7 @@ for (const file of [
   "verify-install.sh",
   "verify-setup.sh",
   "CREDITS.md",
-  "grokbot-vscode-hybrid-factory.zip",
+  "grokbot-vscode-hybrid-factory-v3.zip",
   "assets/hybrid-hero.svg",
   ".grok/skills/hybrid-build/SKILL.md",
   ".grok/skills/verify-app/SKILL.md",

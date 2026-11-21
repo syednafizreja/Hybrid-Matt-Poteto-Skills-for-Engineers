@@ -44,16 +44,20 @@ The result is a focused 12-skill Grok Bot set, a seven-command delivery loop, an
 
 ## Install
 
-### Grok Bot in VS Code
+### Quickstart in VS Code
 
-Download and unzip [`grokbot-vscode-hybrid-factory.zip`](grokbot-vscode-hybrid-factory.zip). From the target project's Git Bash or VS Code terminal:
+Save the unzipped [`grokbot-vscode-hybrid-factory-v3.zip`](grokbot-vscode-hybrid-factory-v3.zip) as your permanent template repository so the workflow is easy to reuse. Open it in VS Code and push it to a GitHub repository you own.
+
+Install into any project repository from Git Bash or the VS Code terminal:
 
 ```bash
-bash /path/to/grokbot-vscode-hybrid-factory/install.sh .
+cd /path/to/your/project
+chmod +x /path/to/grokbot-vscode-hybrid-factory/install.sh
+/path/to/grokbot-vscode-hybrid-factory/install.sh .
 ./verify-setup.sh
 ```
 
-Then open the project in VS Code and invoke `/hybrid-init` in Grok Bot.
+Initialize once per project with `/hybrid-init`, then run `/hybrid-grill` -> `/hybrid-plan` -> `/hybrid-build` -> `/hybrid-ship` -> `/hybrid-retro` in Grok Bot or Grok Build.
 
 ### Make the bundle your GitHub template
 
@@ -88,7 +92,7 @@ npx skills@latest add syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers --sk
 
 Add `-g` for a global install. See the [live agent list](https://github.com/vercel-labs/skills/blob/main/docs/agents.md).
 
-## Factory ZIP contents (34 files)
+## Factory ZIP v3 contents (34 files)
 
 ```text
 grokbot-vscode-hybrid-factory/

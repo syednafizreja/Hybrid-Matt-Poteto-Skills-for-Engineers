@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Audit Hybrid AI Engineering System installation inside any repository.
+# Audit Hybrid AI Engineering System v3 installation inside any repository.
 # Usage: ./verify-setup.sh
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -13,7 +13,7 @@ ok()   { echo "  [OK]   $1"; PASS=$((PASS+1)); }
 warn() { echo "  [WARN] $1"; WARN=$((WARN+1)); }
 fail() { echo "  [FAIL] $1"; FAIL=$((FAIL+1)); }
 
-echo "=== Hybrid AI Engineering System Audit ==="
+echo "=== Hybrid AI Engineering System v3 Audit ==="
 echo "Repo: ${REPO_ROOT}"
 echo ""
 
@@ -34,7 +34,7 @@ fi
 if command -v grok >/dev/null 2>&1; then
   ok "grok CLI available"
 else
-  warn "'grok' CLI not on PATH (fine if using Grok Bot VS Code extension UI directly)"
+  warn "'grok' CLI not on PATH (fine if using Grok Bot or Grok Build in VS Code)"
 fi
 
 echo ""

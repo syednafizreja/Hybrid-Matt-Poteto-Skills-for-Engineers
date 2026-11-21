@@ -10,7 +10,7 @@ import zipfile
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-ARCHIVE_PATH = ROOT / "grokbot-vscode-hybrid-factory.zip"
+ARCHIVE_PATH = ROOT / "grokbot-vscode-hybrid-factory-v3.zip"
 PACKAGE_ROOT = "grokbot-vscode-hybrid-factory"
 GROK_SKILLS = (
     "hybrid-init",

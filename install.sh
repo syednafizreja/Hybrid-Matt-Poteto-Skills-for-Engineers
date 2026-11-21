@@ -57,7 +57,7 @@ copy_tree() {
   done < <(find "${source}" -type f -print0)
 }
 
-echo "==> Installing Hybrid Matt + Poteto Skills into: ${TARGET_DIR}"
+echo "==> Installing Hybrid AI Engineering System v3 into: ${TARGET_DIR}"
 
 for root_file in AGENTS.md CLAUDE.md GLOSSARY.md FEATURE_MAP.md verify-setup.sh; do
   copy_item "${KIT_DIR}/${root_file}" "${TARGET_DIR}/${root_file}"
@@ -128,7 +128,7 @@ echo "Installation complete!"
 echo "Next steps:"
 echo "  1. Open ${TARGET_DIR} in your preferred editor or agent workspace"
 echo "  2. Run ./verify-setup.sh from a Bash terminal"
-echo "  3. In Grok Bot for VS Code, invoke /hybrid-init"
+echo "  3. In Grok Bot or Grok Build, invoke /hybrid-init"
 echo ""
 if [[ -d "${KIT_DIR}/skills" && -f "${KIT_DIR}/library.json" ]]; then
   echo "To install skills into other supported agents' native folders, run from the target repository:"
