@@ -1,65 +1,97 @@
-# Hybrid Matt + Poteto Skills for Engineers
+<div align="center">
+  <h1>Hybrid Matt + Poteto Skills</h1>
+  <p><strong>A complete engineering workflow for AI coding agents.</strong></p>
+  <p>Think clearly. Build in small steps. Prove it works.</p>
+  <p>
+    <a href="https://github.com/syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers?style=flat&color=8b5cf6"></a>
+    <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-14b8a6.svg"></a>
+    <a href="https://github.com/syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers"><img alt="Works with agent skill folders" src="https://img.shields.io/badge/agent%20skills-ready-2563eb.svg"></a>
+  </p>
+</div>
 
-A unified, installable engineering library combining:
+<p align="center">
+  <img src="assets/hybrid-hero.svg" alt="Hybrid, Matt Pocock, and Poteto engineering practices combine into one verified engineering workflow" width="100%">
+</p>
 
-- Hybrid repository workflow
-- Matt Pocock engineering skills
-- Poteto/PStack routing and isolated execution
+## One workflow. Better engineering.
 
-The library gives AI coding agents a common workflow for investigation, planning, implementation, verification, review, and handoff.
+Hybrid combines repository guardrails and runtime proof with Matt Pocock's deep-module and testing practices, plus Poteto's model routing and isolated execution playbooks.
 
-## Install
+Use the skills individually, or follow the end-to-end path from investigation to a review-ready change. The library works with agent tools that discover skills from `.agents/skills`; it also installs the Hybrid workflow skills into `.grok/skills`.
 
-Run from the repository root:
+## Get started
+
+> **Before installing:** the installer replaces the target's root `AGENTS.md` and any same-named skill folders in `.agents/skills` or `.grok/skills`. Back up custom versions first.
+
+Clone this library, then install it into an existing repository:
 
 ```bash
-chmod +x install.sh
-./install.sh /path/to/target-repository
+git clone https://github.com/syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers.git
+cd Hybrid-Matt-Poteto-Skills-for-Engineers
+bash ./install.sh /path/to/your/repository
 ```
 
-To install into the current repository:
+For example, to install into the current directory of a repository:
 
 ```bash
-./install.sh .
+bash ./install.sh .
 ```
 
-Then verify the installation:
+On Windows, run these commands from **Git Bash** and use a Git Bash path such as `/c/Users/you/source/project`.
+
+Confirm the package and installed entry points:
 
 ```bash
-./verify-install.sh
+bash ./verify-install.sh
+test -f /path/to/your/repository/.agents/skills/hybrid/SKILL.md
+test -f /path/to/your/repository/.grok/skills/hybrid-build/SKILL.md
 ```
 
-## Workflow
+`verify-install.sh` checks the cloned library package. The two `test` commands check that the skills landed in the target repository.
 
-The canonical sequence is:
+## The workflow
 
-1. `/hybrid-init`
-2. `/hybrid-investigate`
-3. `/hybrid-grill` or `/prototype`
-4. `/hybrid-plan`
-5. `/hybrid-build`
-6. `/hybrid-ship`
-7. `/hybrid-retro`
+| Step | Skill | Use it to |
+|:--:|---|---|
+| 1 | `hybrid-init` | Set up repository guidance, checks, and runtime verification |
+| 2 | `hybrid-investigate` | Trace behavior and establish evidence before proposing a fix |
+| 3 | `hybrid-grill` | Resolve product or architecture decisions |
+| 4 | `hybrid-plan` | Break agreed work into sequenced, verifiable tickets |
+| 5 | `hybrid-build` | Implement in isolation with focused tests and runtime proof |
+| 6 | `hybrid-ship` | Review the spec, architecture, runtime evidence, and merge risk |
+| 7 | `hybrid-retro` | Turn recurring lessons into durable checks and guidance |
 
-Specialist skills include `codebase-design`, `diagnosing-bugs`, `tdd`, `unslop`, `handoff`, `poteto-mode`, `setup-pstack`, and `verify-app`.
+You can start with any skill that matches the work. For a small bug, use `tdd` directly; for an unfamiliar system, start with `hybrid-investigate`.
 
-## Repository layout
+## What gets installed
 
-```text
-skills/<skill>/SKILL.md
-AGENTS.md
-install.sh
-verify-install.sh
-verify-library.mjs
-library.json
+| Destination | Contents |
+|---|---|
+| `.agents/skills/` | All library skills, including the Hybrid workflow, specialist skills, and Poteto playbooks |
+| `.grok/skills/` | The seven `hybrid-*` workflow skills and `verify-app` |
+| `AGENTS.md` | The library's repository-level engineering rules |
+| `.agents/hybrid-library.json` | Library name, version, sources, and skill inventory |
+
+The specialist collection includes `codebase-design`, `diagnosing-bugs`, `tdd`, `unslop`, `handoff`, `poteto-mode`, `setup-pstack`, and `verify-app`.
+
+## Update the skills
+
+Pull the latest library changes, then run the installer again for each target repository:
+
+```bash
+cd Hybrid-Matt-Poteto-Skills-for-Engineers
+git pull
+bash ./install.sh /path/to/your/repository
 ```
 
-`SKILL.md` files are the canonical skill documents. `AGENTS.md` is the operating policy for repositories where this library is installed.
+The installer replaces matching installed skill folders and `AGENTS.md`, so preserve any local edits before updating.
 
-## Source provenance
+## Contributing
 
-- Hybrid workflow: local Grok hybrid workflow
-- Matt Pocock skills: `mattpocock/skills`
-- PStack/Poteto skills: `ericlitman/open-pstack`
+Improvements and bug reports are welcome. Keep skills focused, make instructions testable, and include the smallest example that demonstrates a change.
 
-The upstream skill repositories remain independent sources. This package merges their relevant workflows into one public, de-duplicated library.
+## Credits and license
+
+This library brings together the Hybrid workflow, [Matt Pocock's skills](https://github.com/mattpocock/skills), and [Open PStack](https://github.com/ericlitman/open-pstack). Original upstream MIT notices are preserved in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+
+Original project material is licensed under the [MIT License](LICENSE).

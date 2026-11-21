@@ -1,10 +1,8 @@
 # Credits
 
-This library merges and adapts concepts and skill documents from:
+This library combines the Hybrid AI Engineering System workflow with material from:
 
 - [Matt Pocock skills](https://github.com/mattpocock/skills)
 - [Open PStack](https://github.com/ericlitman/open-pstack)
-- The local Hybrid AI Engineering System workflow
 
-Upstream projects retain ownership of their respective original works.
-Refer to each upstream repository for its license and current documentation.
+The upstream projects retain ownership of their original work. Their MIT copyright and permission notices are in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).

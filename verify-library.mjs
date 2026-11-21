@@ -15,7 +15,16 @@ for (const skill of manifest.skills) {
   }
 }
 
-for (const file of ["AGENTS.md", "README.md", "install.sh", "verify-install.sh", "CREDITS.md"]) {
+for (const file of [
+  "AGENTS.md",
+  "README.md",
+  "LICENSE",
+  "THIRD_PARTY_NOTICES.md",
+  "install.sh",
+  "verify-install.sh",
+  "CREDITS.md",
+  "assets/hybrid-hero.svg",
+]) {
   if (fs.existsSync(path.join(root, file))) {
     console.log(`[OK] ${file}`);
   } else {

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" fill="none">
+  <defs>
+    <linearGradient id="background" x1="30" y1="0" x2="1170" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1020"/>
+      <stop offset="1" stop-color="#17133B"/>
+    </linearGradient>
+    <linearGradient id="hybrid" x1="104" y1="124" x2="1090" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE"/>
+      <stop offset=".52" stop-color="#818CF8"/>
+      <stop offset="1" stop-color="#C084FC"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#171F37"/>
+      <stop offset="1" stop-color="#11172B"/>
+    </linearGradient>
+    <filter id="glow" x="262" y="156" width="676" height="286" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="520" rx="28" fill="url(#background)"/>
+  <circle cx="142" cy="50" r="165" fill="#22D3EE" fill-opacity=".08"/>
+  <circle cx="1095" cy="480" r="225" fill="#A855F7" fill-opacity=".1"/>
+  <path d="M92 88h1016" stroke="#fff" stroke-opacity=".08"/>
+  <text x="600" y="61" fill="#A5B4FC" font-family="Inter,Segoe UI,sans-serif" font-size="13" font-weight="700" letter-spacing="3" text-anchor="middle">A UNIFIED ENGINEERING SYSTEM FOR AI AGENTS</text>
+
+  <g font-family="Inter,Segoe UI,sans-serif" text-anchor="middle">
+    <rect x="95" y="143" width="254" height="108" rx="18" fill="url(#card)" stroke="#22D3EE" stroke-opacity=".45"/>
+    <circle cx="128" cy="178" r="5" fill="#22D3EE"/>
+    <text x="222" y="185" fill="#ECFEFF" font-size="21" font-weight="700">HYBRID</text>
+    <text x="222" y="216" fill="#A5B4CC" font-size="14">Guardrails + runtime proof</text>
+
+    <rect x="473" y="143" width="254" height="108" rx="18" fill="url(#card)" stroke="#818CF8" stroke-opacity=".55"/>
+    <circle cx="506" cy="178" r="5" fill="#818CF8"/>
+    <text x="600" y="185" fill="#EEF2FF" font-size="21" font-weight="700">MATT POCOCK</text>
+    <text x="600" y="216" fill="#A5B4CC" font-size="14">Deep modules + TDD</text>
+
+    <rect x="851" y="143" width="254" height="108" rx="18" fill="url(#card)" stroke="#C084FC" stroke-opacity=".5"/>
+    <circle cx="884" cy="178" r="5" fill="#C084FC"/>
+    <text x="978" y="185" fill="#FAF5FF" font-size="21" font-weight="700">POTETO</text>
+    <text x="978" y="216" fill="#A5B4CC" font-size="14">Routing + isolated execution</text>
+  </g>
+
+  <path d="M222 252v52l378 64M600 252v116M978 252v52l-378 64" stroke="url(#hybrid)" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 7"/>
+  <circle cx="222" cy="252" r="4" fill="#22D3EE"/>
+  <circle cx="600" cy="252" r="4" fill="#818CF8"/>
+  <circle cx="978" cy="252" r="4" fill="#C084FC"/>
+  <rect x="365" y="340" width="470" height="112" rx="22" fill="#101629" stroke="url(#hybrid)" stroke-width="1.5"/>
+  <text x="600" y="385" fill="#F8FAFC" font-family="Inter,Segoe UI,sans-serif" font-size="25" font-weight="750" text-anchor="middle">Investigate  →  Build  →  Verify  →  Ship</text>
+  <text x="600" y="417" fill="#A5B4CC" font-family="Inter,Segoe UI,sans-serif" font-size="14" text-anchor="middle">One clear path from idea to evidence-backed change</text>
+  <text x="600" y="488" fill="#64748B" font-family="Inter,Segoe UI,sans-serif" font-size="12" letter-spacing="2" text-anchor="middle">OPEN SOURCE  ·  MODULAR  ·  BUILT FOR REAL-WORLD REPOS</text>
+</svg>
