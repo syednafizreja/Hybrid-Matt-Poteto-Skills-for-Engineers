@@ -1,4 +1,4 @@
-name: Hybrid Deterministic CI (Layer-2 Guardrails)
+name: Agentic Harness Deterministic CI (Layer-2 Guardrails)
 
 on:
   pull_request:

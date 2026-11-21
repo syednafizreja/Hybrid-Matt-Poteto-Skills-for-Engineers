@@ -15,7 +15,7 @@ check_file() {
   fi
 }
 
-echo "=== Hybrid Matt + Poteto Skill Verification ==="
+echo "=== Agentic Harness for Engineers Verification ==="
 
 check_file "$REPO_ROOT/library.json" "library.json"
 check_file "$REPO_ROOT/AGENTS.md" "AGENTS.md"

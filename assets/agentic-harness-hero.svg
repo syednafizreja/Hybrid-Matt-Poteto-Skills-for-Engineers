@@ -40,9 +40,9 @@
   <circle cx="95" cy="55" r="190" fill="#22D3EE" fill-opacity=".08"/>
   <circle cx="1115" cy="515" r="250" fill="#A855F7" fill-opacity=".1"/>
 
-  <text x="82" y="74" fill="#A5B4FC" font-family="Inter,Segoe UI,sans-serif" font-size="13" font-weight="700" letter-spacing="3">THE ENGINEERING LOOP FOR AI CODING AGENTS</text>
-  <text x="80" y="156" fill="#F8FAFC" font-family="Inter,Segoe UI,sans-serif" font-size="54" font-weight="750" letter-spacing="-2">Ship reliable code.</text>
-  <text x="83" y="199" fill="#AAB6CC" font-family="Inter,Segoe UI,sans-serif" font-size="19">Understand the system. Make a focused change. Prove it works.</text>
+  <text x="82" y="74" fill="#A5B4FC" font-family="Inter,Segoe UI,sans-serif" font-size="13" font-weight="700" letter-spacing="3">EVIDENCE-FIRST WORKFLOW FOR AI CODING AGENTS</text>
+  <text x="80" y="156" fill="#F8FAFC" font-family="Inter,Segoe UI,sans-serif" font-size="46" font-weight="750" letter-spacing="-1.5">Agentic Harness for Engineers</text>
+  <text x="83" y="199" fill="#AAB6CC" font-family="Inter,Segoe UI,sans-serif" font-size="19">Optimized for Engineers by Engineers</text>
 
   <g font-family="Inter,Segoe UI,sans-serif">
     <rect x="82" y="229" width="440" height="39" rx="19.5" fill="#0C1426" stroke="#34415B"/>
@@ -52,9 +52,7 @@
     <text x="208" y="253" fill="#CFD8E8" font-size="13" font-weight="600">CODEX</text>
     <text x="270" y="253" fill="#526079" font-size="13">/</text>
     <text x="290" y="253" fill="#CFD8E8" font-size="13" font-weight="600">GROK</text>
-    <text x="342" y="253" fill="#526079" font-size="13">/</text>
-    <text x="362" y="253" fill="#CFD8E8" font-size="13" font-weight="600">COPILOT</text>
-    <text x="439" y="253" fill="#8793AA" font-size="13">+ more</text>
+    <text x="342" y="253" fill="#8793AA" font-size="13">+ more</text>
   </g>
 
   <path d="M148 462H1052" stroke="#485574" stroke-opacity=".7" stroke-width="2"/>

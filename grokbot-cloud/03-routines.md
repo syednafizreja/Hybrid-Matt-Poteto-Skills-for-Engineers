@@ -37,7 +37,7 @@ Set up a routine triggered whenever a Pull Request is opened or marked ready for
 3. Route by Merge Danger:
    - Blocking findings or red CI -> Request changes with exact `file:line` citations.
    - `One-Way Door` OR `Medium/Large` blast radius -> Comment "HUMAN APPROVAL REQUIRED" and ping me.
-   - `Two-Way Door` AND `Small` blast radius with 0 findings -> Comment "Verified safe to merge" and await confirmation (switch to auto-squash-merge once we reach Stage 4 on the Trust Ladder).
+   - `Two-Way Door` AND `Small` blast radius with 0 findings -> Comment "Verified safe to merge" and await confirmation. Enable auto-squash-merge only after 20 consecutive clean runs at Stage 4 on the Trust Ladder.
 ```
 
 ---
@@ -45,7 +45,7 @@ Set up a routine triggered whenever a Pull Request is opened or marked ready for
 ## Routine 4 — `@Evaluator`: Weekly Retro, Blind Eval & Layer-2 CI Ratchet (Sunday 18:00)
 ```text
 Set up a routine to run every Sunday at 18:00 [YOUR_TIMEZONE] on [OWNER/REPO].
-1. Collect the last 15 merged PRs, all human PR review comments, and any failed runs from the past 7 days.
+1. Collect the last 15 merged PRs, all human PR review comments, and any failed runs from the past 7 days. Skip quietly if fewer than 2 PRs were merged and there were no failures.
 2. Run `/hybrid-retro`: convert recurring human review comments into hard Layer-2 CI rules (`scripts/check-boundaries.mjs`, linters, tests) first, Layer-3 `verify-app` checks second, and Layer-4 prose last.
 3. Run a blind A/B eval (`docs/agents/eval-rubric-template.md`) in neutral temp directories with a cross-model judge for any skill or `AGENTS.md` edit; drop any edit scoring < 9/10.
 4. Open one consolidated `kind:guardrail` + `door:one-way` PR for my approval and post the Sunday summary in chat.
@@ -56,6 +56,6 @@ Set up a routine to run every Sunday at 18:00 [YOUR_TIMEZONE] on [OWNER/REPO].
 ## Routine 5 — `@Builder` + `@Architect`: Overnight Ticket Queue & 08:00 Digest (Stage 3+)
 ```text
 Set up two routines on [OWNER/REPO]:
-A) Nightly at 23:30 [YOUR_TIMEZONE] (@Builder): Pick up at most 5 unblocked issues labeled `status:ready-for-build` + `door:two-way` + `blast:small`, execute each in an isolated `.worktrees/` branch via `/hybrid-build`, and open PRs via `/hybrid-ship`.
+A) Nightly at 23:30 [YOUR_TIMEZONE] (@Builder): Pick up at most 5 unblocked issues labeled `status:ready-for-build` + `door:two-way` + `blast:small`, execute each in an isolated `.worktrees/` branch via `/hybrid-build`, and open PRs via `/hybrid-ship`. Mark tickets stalled after more than 2 failed attempts as `status:needs-info`.
 B) Daily at 08:00 [YOUR_TIMEZONE] (@Architect): Post a concise morning digest listing all PRs landed on `main` (with commit SHAs for instant `git revert`), PRs awaiting human approval, `@Benny` triage findings, and any red CI alerts.
 ```

@@ -1,4 +1,4 @@
-# Sync Hybrid Skills into Grok Bot Private Skills (Optional Cloud Layer)
+# Sync Agentic Harness Skills into Grok Bot Private Skills (Optional Cloud Layer)
 
 When working locally in **VS Code**, Grok reads `.grok/skills/*/SKILL.md` directly from your repository—no extra import needed.
 

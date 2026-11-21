@@ -8,4 +8,4 @@ Before opening or updating its PR, the workflow runs sync tests, the library ver
 
 The job reads public upstream files and uses the built-in `GITHUB_TOKEN` for API rate limits, branch updates, draft PRs, and CI dispatch. It requests `actions: write`, `contents: write`, and `pull-requests: write`. In repository settings, allow GitHub Actions to create pull requests if that option is disabled. No personal access token or model API key is required.
 
-Update the source map when the upstream skill layout changes. Keep adapted Hybrid skills out of `sync` unless their upstream source and merge behavior are explicit.
+Update the source map when the upstream skill layout changes. Keep Agentic Harness-specific skills out of `sync` unless their upstream source and merge behavior are explicit.

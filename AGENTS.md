@@ -1,4 +1,4 @@
-# Hybrid AI Engineering System v3 — Operating Rules
+# Agentic Harness for Engineers — Operating Rules
 
 This repository runs a unified **Matt Pocock + Lauren Tan** engineering workflow inside **VS Code + Grok Bot**.
 Our core objective: **less code, deeper modules, hard deterministic guardrails, real runtime proof, and fearless parallelism**.
@@ -28,6 +28,7 @@ Soft rules rot as repositories grow. Push every recurring invariant as far **up*
 - **Subtract Before Adding (`unslop`):** Delete dead paths, duplicate helpers, and narrating AI comments instead of stacking defensive workarounds.
 - **Candor Over Sycophancy:** If a proposed scope or design does not earn its place, push back directly with concrete trade-offs.
 - **Pareto-Frontier Effort Discipline (`docs/agents/model-routing.md`):** Use **medium** reasoning effort for codebase exploration and routine implementation; escalate to **high** effort only for runtime verification, hard bug diagnosis, security review, and blind skill evals.
+- **Commit Attribution:** Add no automated co-author trailers; include attribution only when the user explicitly requests it.
 
 ---
 

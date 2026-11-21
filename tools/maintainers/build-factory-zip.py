@@ -10,8 +10,8 @@ import zipfile
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-ARCHIVE_PATH = ROOT / "grokbot-vscode-hybrid-factory-v3.zip"
-PACKAGE_ROOT = "grokbot-vscode-hybrid-factory"
+ARCHIVE_PATH = ROOT / "agentic-harness-for-engineers-v3.zip"
+PACKAGE_ROOT = "agentic-harness-for-engineers"
 GROK_SKILLS = (
     "hybrid-init",
     "hybrid-investigate",
@@ -153,7 +153,7 @@ def verify_archive(bash):
                 if resolved not in {file.removeprefix(f"{PACKAGE_ROOT}/") for file in names}:
                     raise ValueError(f"Missing packaged skill reference: {relative} -> {target}")
 
-        with tempfile.TemporaryDirectory(prefix="hybrid-factory-zip-") as temporary:
+        with tempfile.TemporaryDirectory(prefix="agentic-harness-zip-") as temporary:
             for name in sorted(names):
                 if not name.endswith((".sh", ".mjs")):
                     continue

@@ -44,7 +44,6 @@ Starting points:
 - [Claude Code cloud](https://code.claude.com/docs/en/claude-code-on-the-web), with [scheduled tasks](https://code.claude.com/docs/en/routines) for cron, API and GitHub event triggers.
 - [Claude Managed Agents](https://platform.claude.com/docs/en/managed-agents/overview): API-first; create a run against an environment and stream events.
 - [Codex cloud](https://developers.openai.com/codex/cloud): a container per task.
-- [Copilot coding agent](https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent): assign an issue to Copilot; its runner is a GitHub Actions runner.
 
 ## Bring-your-own worker
 
@@ -52,7 +51,7 @@ The bundled platform keeps its agent loop and its queue of runs, but tool calls 
 
 **Pick it when** the user wants a bundled agent but runs must reach a private network, keep data on the user's machines, or use custom hardware.
 
-Starting points: [Claude Code self-hosted environments](https://code.claude.com/docs/en/self-hosted-environments), [Cursor self-hosted pool](https://cursor.com/docs/cloud-agent/self-hosted-pool), [Copilot coding agent on ARC](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/customize-the-agent-environment).
+Starting points: [Claude Code self-hosted environments](https://code.claude.com/docs/en/self-hosted-environments), [Cursor self-hosted pool](https://cursor.com/docs/cloud-agent/self-hosted-pool).
 
 ## Own VPS or containers
 

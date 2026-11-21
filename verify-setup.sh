@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Audit Hybrid AI Engineering System v3 installation inside any repository.
+# Audit Agentic Harness for Engineers v3 installation inside any repository.
 # Usage: ./verify-setup.sh
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -13,7 +13,7 @@ ok()   { echo "  [OK]   $1"; PASS=$((PASS+1)); }
 warn() { echo "  [WARN] $1"; WARN=$((WARN+1)); }
 fail() { echo "  [FAIL] $1"; FAIL=$((FAIL+1)); }
 
-echo "=== Hybrid AI Engineering System v3 Audit ==="
+echo "=== Agentic Harness for Engineers v3 Audit ==="
 echo "Repo: ${REPO_ROOT}"
 echo ""
 
@@ -38,7 +38,7 @@ else
 fi
 
 echo ""
-echo "2. Unified Hybrid Skills (.grok/skills/)"
+echo "2. Unified Agentic Harness Skills (.grok/skills/)"
 EXPECTED_SKILLS=(
   hybrid-init
   hybrid-investigate

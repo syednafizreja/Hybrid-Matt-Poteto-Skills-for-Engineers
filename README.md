@@ -1,7 +1,7 @@
 <div align="center">
-  <h1>Hybrid AI Engineering Factory</h1>
-  <p><strong>One evidence-first workflow. Twelve native Grok Bot skills.</strong></p>
-  <p>Grok Bot in VS Code factory; portable Agent Skills catalog in the full repository.</p>
+  <h1>Agentic Harness for Engineers</h1>
+  <p><strong>Optimized for Engineers by Engineers</strong></p>
+  <p>One evidence-first workflow. Twelve native Grok Bot skills plus a portable Agent Skills catalog.</p>
   <p>
     <a href="#licensing-and-attribution"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-14b8a6.svg"></a>
     <a href="https://agentskills.io"><img alt="Agent Skills compatible" src="https://img.shields.io/badge/Agent%20Skills-compatible-2563eb.svg"></a>
@@ -9,14 +9,14 @@
 </div>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers/main/assets/hybrid-hero.svg" alt="An engineering workflow for AI coding agents: understand, plan, build, and prove." width="100%">
+  <img src="https://raw.githubusercontent.com/syednafizreja/agentic-harness-for-engineers/main/assets/agentic-harness-hero.svg" alt="Agentic Harness for Engineers: Optimized for Engineers by Engineers." width="100%">
 </p>
 
 > **For engineers:** investigate real code, make focused changes, and prove behavior before shipping.
 
-## Why this hybrid
+## Why this harness
 
-Matt Pocock's engineering skills and Lauren Tan's PStack/GrokBot/Dune workflows bring complementary strengths: precise specifications, test-first implementation, verifiable sequencing, isolated worktrees, and real runtime proof. This factory combines them into one vocabulary and one review path instead of installing overlapping packs side by side.
+Matt Pocock's engineering skills and Lauren Tan's PStack/GrokBot/Dune workflows bring complementary strengths: precise specifications, test-first implementation, verifiable sequencing, isolated worktrees, and real runtime proof. Agentic Harness for Engineers combines them into one vocabulary and one review path instead of installing overlapping packs side by side.
 
 The result is a focused 12-skill Grok Bot set, a seven-command delivery loop, and five enforcement layers. Layers 1–3 are hard architecture, CI, and runtime checks; Layers 4–5 add domain steering and adversarial review.
 
@@ -42,18 +42,27 @@ The result is a focused 12-skill Grok Bot set, a seven-command delivery loop, an
 4. **Domain steering:** `AGENTS.md`, `GLOSSARY.md`, ADRs, and coding standards.
 5. **Adversarial review:** `/hybrid-ship` checks scope, architecture, runtime evidence, and security.
 
+## High-leverage habits for token savings and quality
+
+- Start a fresh session before context gets bloated; use `/handoff` to carry verified facts into it.
+- Keep always-loaded `AGENTS.md` concise and link detailed guidance in `docs/`; read only what applies to the task.
+- Disable unused MCP servers and noisy watchers. The bundled VS Code settings already exclude `.worktrees/`, build outputs, and `node_modules/` from watchers.
+- Use Plan mode before large edits and grant tools only the access the task needs.
+- Let deterministic checks catch mechanical failures; reserve high reasoning effort for runtime proof, hard bugs, security, and reviews.
+- Batch routine issue triage and feedback into scheduled runs instead of constant ping-pong.
+
 ## Install
 
 ### Quickstart in VS Code
 
-Save the unzipped [`grokbot-vscode-hybrid-factory-v3.zip`](grokbot-vscode-hybrid-factory-v3.zip) as your permanent template repository so the workflow is easy to reuse. Open it in VS Code and push it to a GitHub repository you own.
+Save the unzipped [`agentic-harness-for-engineers-v3.zip`](agentic-harness-for-engineers-v3.zip) as your permanent template repository so the workflow is easy to reuse. Open it in VS Code and push it to a GitHub repository you own.
 
 Install into any project repository from Git Bash or the VS Code terminal:
 
 ```bash
 cd /path/to/your/project
-chmod +x /path/to/grokbot-vscode-hybrid-factory/install.sh
-/path/to/grokbot-vscode-hybrid-factory/install.sh .
+chmod +x /path/to/agentic-harness-for-engineers/install.sh
+/path/to/agentic-harness-for-engineers/install.sh .
 ./verify-setup.sh
 ```
 
@@ -73,12 +82,12 @@ git push -u origin main
 
 Enable **Settings -> General -> Template repository**. New projects can use the template directly; existing projects use the installer above.
 
-### Claude, Codex, Copilot, Gemini, and other agents
+### Claude, Codex, Gemini, and other agents
 
 Use the full repository's Agent Skills catalog to choose skills and supported agents interactively:
 
 ```bash
-npx skills@latest add syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers
+npx skills@latest add syednafizreja/agentic-harness-for-engineers
 ```
 
 Requires Node.js 22.20 or later.
@@ -86,8 +95,8 @@ Requires Node.js 22.20 or later.
 Install all skills to all supported agents with `--all`, or target one skill and agent:
 
 ```bash
-npx skills@latest add syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers --all
-npx skills@latest add syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers --skill tdd --agent codex
+npx skills@latest add syednafizreja/agentic-harness-for-engineers --all
+npx skills@latest add syednafizreja/agentic-harness-for-engineers --skill tdd --agent codex
 ```
 
 Add `-g` for a global install. See the [live agent list](https://github.com/vercel-labs/skills/blob/main/docs/agents.md).
@@ -95,7 +104,7 @@ Add `-g` for a global install. See the [live agent list](https://github.com/verc
 ## Factory ZIP v3 contents (34 files)
 
 ```text
-grokbot-vscode-hybrid-factory/
+agentic-harness-for-engineers/
 ├── README.md
 ├── install.sh
 ├── verify-setup.sh
@@ -142,17 +151,17 @@ The cloud routines are optional. The local VS Code workflow works without Grok B
 
 ## Upstream updates
 
-The full repository checks Matt Pocock and Open PStack weekly and opens a draft PR for human review; it never auto-merges. The PR also refreshes this 34-file ZIP. See the [sync policy](https://github.com/syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers/blob/main/.github/UPSTREAM_SYNC.md). Run `npx skills@latest update` to update CLI-installed skills.
+The full repository checks Matt Pocock and Open PStack weekly and opens a draft PR for human review; it never auto-merges. The PR also refreshes this 34-file ZIP. See the [sync policy](https://github.com/syednafizreja/agentic-harness-for-engineers/blob/main/.github/UPSTREAM_SYNC.md). Run `npx skills@latest update` to update CLI-installed skills.
 
 ## Licensing and attribution
 
-The hybrid factory is MIT licensed. Adapted portions from [Matt Pocock's skills](https://github.com/mattpocock/skills) and [Open PStack](https://github.com/ericlitman/open-pstack) retain their MIT notices. The full repository also keeps these notices in `THIRD_PARTY_NOTICES.md`.
+Agentic Harness for Engineers is MIT licensed. Adapted portions from [Matt Pocock's skills](https://github.com/mattpocock/skills) and [Open PStack](https://github.com/ericlitman/open-pstack) retain their MIT notices. The full repository also keeps these notices in `THIRD_PARTY_NOTICES.md`.
 
 <details>
 <summary>MIT license texts included with the factory</summary>
 
 <!-- HYBRID-THIRD-PARTY-NOTICES:BEGIN -->
-### Hybrid AI Engineering Factory
+### Agentic Harness for Engineers
 
 ```text
 MIT License

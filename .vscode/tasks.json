@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Hybrid: Verify Setup",
+      "label": "Agentic Harness: Verify Setup",
       "type": "shell",
       "command": "bash",
       "args": [
@@ -12,7 +12,7 @@
       "group": "test"
     },
     {
-      "label": "Hybrid: Layer-2 Boundary & Anti-Slop Check",
+      "label": "Agentic Harness: Layer-2 Boundary & Anti-Slop Check",
       "type": "shell",
       "command": "node scripts/check-boundaries.mjs",
       "problemMatcher": [],
@@ -22,7 +22,7 @@
       }
     },
     {
-      "label": "Hybrid: Prune Stale Worktree Metadata",
+      "label": "Agentic Harness: Prune Stale Worktree Metadata",
       "type": "shell",
       "command": "git worktree prune",
       "problemMatcher": []

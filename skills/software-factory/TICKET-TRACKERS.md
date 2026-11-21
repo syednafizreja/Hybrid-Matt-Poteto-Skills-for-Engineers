@@ -10,11 +10,11 @@ The ticket tracker is the factory's human interface. Each type below is a starti
 
 The tracker built into the git host, so tickets, branches and PRs share one product, one permission model and one identity. A factory picks it when it is small, the team already lives on the git host, or the repo is public. This is the "All on GitHub" design: the git host's CI fills the orchestrator slot with no glue. Labels are the dependable router, because statuses live on a separate board. Outside developers file where the code is; non-developers need an account, so a feedback button files through the API. Self-hosted git hosts carry their tracker with them.
 
-- [GitHub Issues](https://docs.github.com/en/copilot/concepts/agents/about-third-party-agents): the default; assign-to-agent for Copilot, Claude and Codex.
+- [GitHub Issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues): the default; integrations can route issues to supported coding agents.
 - [GitLab Issues](https://about.gitlab.com/blog/how-to-use-a-work-item-created-trigger/): Duo Agent Platform flows triggered from work items.
 - [Forgejo](https://forgejo.org/2026-10-release-v17-0/): self-hosted, Actions-compatible.
 
-To verify: which assign-to-agent features are still in preview and which plans include them; whether a native agent reads later comments or only the ticket at assignment (as of 2026-10, Copilot reads it at assignment only).
+To verify: which agent-assignment features are still in preview and which plans include them; whether each agent reads later comments or only the ticket as it existed at assignment.
 
 ### 2. Agent-native dev tracker
 

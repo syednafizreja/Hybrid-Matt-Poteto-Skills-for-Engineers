@@ -14,7 +14,7 @@ description: Drives the real running application using FEATURE_MAP.md to reprodu
 2. **Boot Cleanly:**
    - Start the local dev server, CLI binary, or test harness from a clean state and verify the health check succeeds.
 3. **Bug Reproduction Mode (`@Benny` / `/hybrid-investigate`):**
-   - Test on the reported commit/branch AND on latest `main`.
+   - Test latest `main` first, then the reported commit/branch.
    - If the bug does **not** reproduce on `main`, record the passing output and report **"Already fixed on `main` — release needed."**
    - If reproduced on `main`, capture the exact failing stack trace, console error, network response, or failing test output.
 4. **Feature / Fix Verification Mode (`/hybrid-build` / `/hybrid-ship`):**

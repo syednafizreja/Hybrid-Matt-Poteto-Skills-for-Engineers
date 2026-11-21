@@ -57,7 +57,7 @@ copy_tree() {
   done < <(find "${source}" -type f -print0)
 }
 
-echo "==> Installing Hybrid AI Engineering System v3 into: ${TARGET_DIR}"
+echo "==> Installing Agentic Harness for Engineers v3 into: ${TARGET_DIR}"
 
 for root_file in AGENTS.md CLAUDE.md GLOSSARY.md FEATURE_MAP.md verify-setup.sh; do
   copy_item "${KIT_DIR}/${root_file}" "${TARGET_DIR}/${root_file}"
@@ -78,7 +78,7 @@ for github_file in .github/pull_request_template.md .github/workflows/determinis
 done
 
 if [[ -f "${KIT_DIR}/library.json" ]]; then
-  copy_item "${KIT_DIR}/library.json" "${TARGET_DIR}/.agents/hybrid-library.json"
+  copy_item "${KIT_DIR}/library.json" "${TARGET_DIR}/.agents/agentic-harness-library.json"
 fi
 
 if [[ -f "${KIT_DIR}/THIRD_PARTY_NOTICES.md" ]]; then
@@ -132,5 +132,5 @@ echo "  3. In Grok Bot or Grok Build, invoke /hybrid-init"
 echo ""
 if [[ -d "${KIT_DIR}/skills" && -f "${KIT_DIR}/library.json" ]]; then
   echo "To install skills into other supported agents' native folders, run from the target repository:"
-  echo "  npx skills@latest add syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers"
+  echo "  npx skills@latest add syednafizreja/agentic-harness-for-engineers"
 fi

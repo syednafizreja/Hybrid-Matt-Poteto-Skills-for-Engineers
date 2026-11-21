@@ -14,7 +14,7 @@ Configure this repository so all `/hybrid-*` skills, sub-agents, and Grok Bot ro
 2. **Confirm 3 Quick Choices with the User (Concise Single Turn):**
    - **Issue Tracker:** GitHub Issues (`gh` CLI, recommended) or local Markdown tickets under `docs/tickets/`?
    - **Verification Surface:** Web/Electron UI (Playwright/CDP), CLI binary, API server, or test-suite only?
-   - **Model Routing:** Confirm default model sheet in `docs/agents/model-routing.md` (default: medium effort for exploration/coding, high effort + cross-model review for verification/security).
+   - **Model Routing:** Confirm `docs/agents/model-routing.md` defaults (medium effort for exploration/coding; high effort for verification, security, and blind evaluations).
 3. **Update Strategic Config Files:**
    - Fill in `docs/agents/issue-tracker.md` with the detected `OWNER/REPO` slug.
    - Update Section 4 of `AGENTS.md` with the repo's exact fast deterministic check command (`typecheck && lint && test && node scripts/check-boundaries.mjs`).
