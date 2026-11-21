@@ -1,0 +1,29 @@
+{
+  "name": "hybrid-matt-poteto-skills",
+  "version": "1.0.0",
+  "sources": [
+    "Hybrid workflow",
+    "mattpocock/skills",
+    "ericlitman/open-pstack"
+  ],
+  "skills": [
+    "hybrid",
+    "hybrid-init",
+    "hybrid-investigate",
+    "hybrid-grill",
+    "hybrid-plan",
+    "hybrid-build",
+    "hybrid-ship",
+    "hybrid-retro",
+    "verify-app",
+    "codebase-design",
+    "diagnosing-bugs",
+    "tdd",
+    "unslop",
+    "handoff",
+    "poteto-mode",
+    "setup-pstack",
+    "software-factory",
+    "setup-matt-pocock-skills"
+  ]
+}
