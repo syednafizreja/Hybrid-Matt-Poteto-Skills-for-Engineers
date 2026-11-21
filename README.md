@@ -1,9 +1,11 @@
 <div align="center">
   <h1>Agentic Harness for Engineers</h1>
   <p><strong>Optimized for Engineers by Engineers</strong></p>
-  <p>One evidence-first workflow. Twelve native Grok Bot skills plus a portable Agent Skills catalog.</p>
+  <p>Model-agnostic workflows to plan, build, and prove software across teams and tools.</p>
   <p>
     <a href="#licensing-and-attribution"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-14b8a6.svg"></a>
+    <img alt="Model agnostic" src="https://img.shields.io/badge/model-agnostic-8b5cf6.svg">
+    <img alt="Evidence first" src="https://img.shields.io/badge/approach-evidence--first-0ea5e9.svg">
     <a href="https://agentskills.io"><img alt="Agent Skills compatible" src="https://img.shields.io/badge/Agent%20Skills-compatible-2563eb.svg"></a>
   </p>
 </div>
@@ -16,9 +18,9 @@
 
 ## Why this harness
 
-Matt Pocock's engineering skills and Lauren Tan's PStack/GrokBot/Dune workflows bring complementary strengths: precise specifications, test-first implementation, verifiable sequencing, isolated worktrees, and real runtime proof. Agentic Harness for Engineers combines them into one vocabulary and one review path instead of installing overlapping packs side by side.
+Agentic Harness for Engineers combines precise specifications, test-first implementation, verifiable sequencing, isolated worktrees, and real runtime proof into one portable workflow for any AI coding agent. Its practices build on work from Matt Pocock and Lauren Tan.
 
-The result is a focused 12-skill Grok Bot set, a seven-command delivery loop, and five enforcement layers. Layers 1–3 are hard architecture, CI, and runtime checks; Layers 4–5 add domain steering and adversarial review.
+The result is a portable workflow for any AI coding agent: a seven-command delivery loop, a compact 12-skill core, and five enforcement layers. Layers 1–3 provide hard architecture, CI, and runtime checks; Layers 4–5 add domain steering and adversarial review.
 
 ## The seven-command loop
 
@@ -53,9 +55,25 @@ The result is a focused 12-skill Grok Bot set, a seven-command delivery loop, an
 
 ## Install
 
-### Quickstart in VS Code
+### Any supported agent
 
-Save the unzipped [`agentic-harness-for-engineers-v3.zip`](agentic-harness-for-engineers-v3.zip) as your permanent template repository so the workflow is easy to reuse. Open it in VS Code and push it to a GitHub repository you own.
+Install the portable Agent Skills catalog and choose the agents you use:
+
+```bash
+npx skills@latest add syednafizreja/agentic-harness-for-engineers
+```
+
+Requires Node.js 22.20 or later. Add `--all` to install every skill to every supported agent:
+
+```bash
+npx skills@latest add syednafizreja/agentic-harness-for-engineers --all
+```
+
+For a selective install, add `--skill <skill>` and `--agent <agent>` using IDs from the [live agent list](https://github.com/vercel-labs/skills/blob/main/docs/agents.md). Add `-g` for a global install.
+
+### Optional: VS Code + Grok Bot bundle
+
+The portable catalog works across agents. For a ready-to-use VS Code + Grok Bot setup, save the unzipped [`agentic-harness-for-engineers-v3.zip`](agentic-harness-for-engineers-v3.zip) as your permanent template repository. Open it in VS Code and push it to a GitHub repository you own.
 
 Install into any project repository from Git Bash or the VS Code terminal:
 
@@ -82,26 +100,7 @@ git push -u origin main
 
 Enable **Settings -> General -> Template repository**. New projects can use the template directly; existing projects use the installer above.
 
-### Claude, Codex, Gemini, and other agents
-
-Use the full repository's Agent Skills catalog to choose skills and supported agents interactively:
-
-```bash
-npx skills@latest add syednafizreja/agentic-harness-for-engineers
-```
-
-Requires Node.js 22.20 or later.
-
-Install all skills to all supported agents with `--all`, or target one skill and agent:
-
-```bash
-npx skills@latest add syednafizreja/agentic-harness-for-engineers --all
-npx skills@latest add syednafizreja/agentic-harness-for-engineers --skill tdd --agent codex
-```
-
-Add `-g` for a global install. See the [live agent list](https://github.com/vercel-labs/skills/blob/main/docs/agents.md).
-
-## Factory ZIP v3 contents (34 files)
+## Optional VS Code + Grok Bot ZIP (34 files)
 
 ```text
 agentic-harness-for-engineers/

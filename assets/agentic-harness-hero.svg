@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" fill="none" role="img" aria-labelledby="hero-title hero-description">
+  <title id="hero-title">Agentic Harness for Engineers</title>
+  <desc id="hero-description">A model-agnostic engineering workflow: investigate, plan, build, and verify. Optimized for Engineers by Engineers.</desc>
   <defs>
     <linearGradient id="bg" x1="30" y1="0" x2="1170" y2="560" gradientUnits="userSpaceOnUse">
       <stop stop-color="#080D1A"/>
@@ -40,19 +42,20 @@
   <circle cx="95" cy="55" r="190" fill="#22D3EE" fill-opacity=".08"/>
   <circle cx="1115" cy="515" r="250" fill="#A855F7" fill-opacity=".1"/>
 
-  <text x="82" y="74" fill="#A5B4FC" font-family="Inter,Segoe UI,sans-serif" font-size="13" font-weight="700" letter-spacing="3">EVIDENCE-FIRST WORKFLOW FOR AI CODING AGENTS</text>
+  <text x="82" y="74" fill="#A5B4FC" font-family="Inter,Segoe UI,sans-serif" font-size="13" font-weight="700" letter-spacing="2.5">MODEL-AGNOSTIC / HUMAN-LED / EVIDENCE-FIRST</text>
   <text x="80" y="156" fill="#F8FAFC" font-family="Inter,Segoe UI,sans-serif" font-size="46" font-weight="750" letter-spacing="-1.5">Agentic Harness for Engineers</text>
   <text x="83" y="199" fill="#AAB6CC" font-family="Inter,Segoe UI,sans-serif" font-size="19">Optimized for Engineers by Engineers</text>
 
   <g font-family="Inter,Segoe UI,sans-serif">
     <rect x="82" y="229" width="440" height="39" rx="19.5" fill="#0C1426" stroke="#34415B"/>
     <circle cx="105" cy="248.5" r="4" fill="#34D399"/>
-    <text x="121" y="253" fill="#CFD8E8" font-size="13" font-weight="600">CLAUDE</text>
+    <text x="121" y="253" fill="#CFD8E8" font-size="13" font-weight="600">IDE</text>
     <text x="188" y="253" fill="#526079" font-size="13">/</text>
-    <text x="208" y="253" fill="#CFD8E8" font-size="13" font-weight="600">CODEX</text>
+    <text x="208" y="253" fill="#CFD8E8" font-size="13" font-weight="600">CLI</text>
     <text x="270" y="253" fill="#526079" font-size="13">/</text>
-    <text x="290" y="253" fill="#CFD8E8" font-size="13" font-weight="600">GROK</text>
-    <text x="342" y="253" fill="#8793AA" font-size="13">+ more</text>
+    <text x="290" y="253" fill="#CFD8E8" font-size="13" font-weight="600">CI</text>
+    <text x="342" y="253" fill="#526079" font-size="13">/</text>
+    <text x="362" y="253" fill="#8793AA" font-size="13">ANY AGENT</text>
   </g>
 
   <path d="M148 462H1052" stroke="#485574" stroke-opacity=".7" stroke-width="2"/>
@@ -88,4 +91,5 @@
   <circle cx="270" cy="512" r="2" fill="#526079"/>
   <text x="288" y="517" fill="#8491A9" font-family="Inter,Segoe UI,sans-serif" font-size="13">Runtime proof</text>
   <text x="1118" y="517" fill="#66748D" font-family="Inter,Segoe UI,sans-serif" font-size="12" letter-spacing="1.6" text-anchor="end">OPEN SOURCE / MODULAR / ENGINEER-LED</text>
+  <text x="1118" y="542" fill="#8491A9" font-family="Inter,Segoe UI,sans-serif" font-size="10" letter-spacing="1.2" text-anchor="end">@syednafizreja</text>
 </svg>
