@@ -3,7 +3,6 @@
   <p><strong>A complete engineering workflow for AI coding agents.</strong></p>
   <p>Think clearly. Build in small steps. Prove it works.</p>
   <p>
-    <a href="https://github.com/syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers?style=flat&color=8b5cf6"></a>
     <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-14b8a6.svg"></a>
     <a href="https://github.com/syednafizreja/Hybrid-Matt-Poteto-Skills-for-Engineers"><img alt="Works with agent skill folders" src="https://img.shields.io/badge/agent%20skills-ready-2563eb.svg"></a>
   </p>
@@ -12,6 +11,10 @@
 <p align="center">
   <img src="assets/hybrid-hero.svg" alt="Hybrid, Matt Pocock, and Poteto engineering practices combine into one verified engineering workflow" width="100%">
 </p>
+
+## About
+
+Hybrid Matt + Poteto Skills is an open-source toolkit for making AI-assisted software work more reliable. It brings practical engineering methods into one reusable library so teams and independent developers can investigate with evidence, build in focused steps, and verify changes against real applications.
 
 ## One workflow. Better engineering.
 
@@ -89,6 +92,10 @@ The installer replaces matching installed skill folders and `AGENTS.md`, so pres
 ## Contributing
 
 Improvements and bug reports are welcome. Keep skills focused, make instructions testable, and include the smallest example that demonstrates a change.
+
+## Contributors
+
+- [Syed Nafiz Reja](https://github.com/syednafizreja) - creator and maintainer
 
 ## Credits and license
 
