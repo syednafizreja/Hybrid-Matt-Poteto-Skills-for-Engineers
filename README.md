@@ -26,6 +26,8 @@ Use the skills individually, or follow the end-to-end path from investigation to
 
 By default, the installer skips files that already exist in the target repository. Use `--force` to overwrite the included files, including `AGENTS.md` and matching skill files. Back up local customizations before forcing an update.
 
+Prefer a ready-to-extract VS Code + Grok starter kit? Download the [34-file factory ZIP](grokbot-vscode-hybrid-factory.zip). It includes the Hybrid skills, setup templates, CI files, and optional Grok Bot cloud guides.
+
 Clone this library, then install it into an existing repository:
 
 ```bash
