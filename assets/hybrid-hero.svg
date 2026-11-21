@@ -1,51 +1,93 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" fill="none">
   <defs>
-    <linearGradient id="background" x1="30" y1="0" x2="1170" y2="520" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0B1020"/>
-      <stop offset="1" stop-color="#17133B"/>
+    <linearGradient id="bg" x1="30" y1="0" x2="1170" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#080D1A"/>
+      <stop offset=".55" stop-color="#11172B"/>
+      <stop offset="1" stop-color="#21133A"/>
     </linearGradient>
-    <linearGradient id="hybrid" x1="104" y1="124" x2="1090" y2="400" gradientUnits="userSpaceOnUse">
+    <linearGradient id="accent" x1="100" y1="0" x2="1100" y2="0" gradientUnits="userSpaceOnUse">
       <stop stop-color="#22D3EE"/>
       <stop offset=".52" stop-color="#818CF8"/>
       <stop offset="1" stop-color="#C084FC"/>
     </linearGradient>
-    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#171F37"/>
-      <stop offset="1" stop-color="#11172B"/>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#151E34"/>
+      <stop offset="1" stop-color="#101729"/>
     </linearGradient>
-    <filter id="glow" x="262" y="156" width="676" height="286" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-      <feGaussianBlur stdDeviation="30"/>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0V36" stroke="#A5B4FC" stroke-opacity=".055"/>
+    </pattern>
+    <filter id="soft-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8"/>
     </filter>
   </defs>
-  <rect width="1200" height="520" rx="28" fill="url(#background)"/>
-  <circle cx="142" cy="50" r="165" fill="#22D3EE" fill-opacity=".08"/>
-  <circle cx="1095" cy="480" r="225" fill="#A855F7" fill-opacity=".1"/>
-  <path d="M92 88h1016" stroke="#fff" stroke-opacity=".08"/>
-  <text x="600" y="61" fill="#A5B4FC" font-family="Inter,Segoe UI,sans-serif" font-size="13" font-weight="700" letter-spacing="3" text-anchor="middle">A UNIFIED ENGINEERING SYSTEM FOR AI AGENTS</text>
+  <style>
+    .signal {
+      animation: signal 6s linear infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    @keyframes signal {
+      0% { opacity: .35; transform: translateX(0); }
+      100% { opacity: 1; transform: translateX(900px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .signal { animation: none; opacity: .7; }
+    }
+  </style>
+  <rect width="1200" height="560" rx="28" fill="url(#bg)"/>
+  <rect width="1200" height="560" rx="28" fill="url(#grid)"/>
+  <circle cx="95" cy="55" r="190" fill="#22D3EE" fill-opacity=".08"/>
+  <circle cx="1115" cy="515" r="250" fill="#A855F7" fill-opacity=".1"/>
 
-  <g font-family="Inter,Segoe UI,sans-serif" text-anchor="middle">
-    <rect x="95" y="143" width="254" height="108" rx="18" fill="url(#card)" stroke="#22D3EE" stroke-opacity=".45"/>
-    <circle cx="128" cy="178" r="5" fill="#22D3EE"/>
-    <text x="222" y="185" fill="#ECFEFF" font-size="21" font-weight="700">HYBRID</text>
-    <text x="222" y="216" fill="#A5B4CC" font-size="14">Guardrails + runtime proof</text>
+  <text x="82" y="74" fill="#A5B4FC" font-family="Inter,Segoe UI,sans-serif" font-size="13" font-weight="700" letter-spacing="3">THE ENGINEERING LOOP FOR AI CODING AGENTS</text>
+  <text x="80" y="156" fill="#F8FAFC" font-family="Inter,Segoe UI,sans-serif" font-size="54" font-weight="750" letter-spacing="-2">Ship reliable code.</text>
+  <text x="83" y="199" fill="#AAB6CC" font-family="Inter,Segoe UI,sans-serif" font-size="19">Understand the system. Make a focused change. Prove it works.</text>
 
-    <rect x="473" y="143" width="254" height="108" rx="18" fill="url(#card)" stroke="#818CF8" stroke-opacity=".55"/>
-    <circle cx="506" cy="178" r="5" fill="#818CF8"/>
-    <text x="600" y="185" fill="#EEF2FF" font-size="21" font-weight="700">MATT POCOCK</text>
-    <text x="600" y="216" fill="#A5B4CC" font-size="14">Deep modules + TDD</text>
-
-    <rect x="851" y="143" width="254" height="108" rx="18" fill="url(#card)" stroke="#C084FC" stroke-opacity=".5"/>
-    <circle cx="884" cy="178" r="5" fill="#C084FC"/>
-    <text x="978" y="185" fill="#FAF5FF" font-size="21" font-weight="700">POTETO</text>
-    <text x="978" y="216" fill="#A5B4CC" font-size="14">Routing + isolated execution</text>
+  <g font-family="Inter,Segoe UI,sans-serif">
+    <rect x="82" y="229" width="440" height="39" rx="19.5" fill="#0C1426" stroke="#34415B"/>
+    <circle cx="105" cy="248.5" r="4" fill="#34D399"/>
+    <text x="121" y="253" fill="#CFD8E8" font-size="13" font-weight="600">CLAUDE</text>
+    <text x="188" y="253" fill="#526079" font-size="13">/</text>
+    <text x="208" y="253" fill="#CFD8E8" font-size="13" font-weight="600">CODEX</text>
+    <text x="270" y="253" fill="#526079" font-size="13">/</text>
+    <text x="290" y="253" fill="#CFD8E8" font-size="13" font-weight="600">GROK</text>
+    <text x="342" y="253" fill="#526079" font-size="13">/</text>
+    <text x="362" y="253" fill="#CFD8E8" font-size="13" font-weight="600">COPILOT</text>
+    <text x="439" y="253" fill="#8793AA" font-size="13">+ more</text>
   </g>
 
-  <path d="M222 252v52l378 64M600 252v116M978 252v52l-378 64" stroke="url(#hybrid)" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 7"/>
-  <circle cx="222" cy="252" r="4" fill="#22D3EE"/>
-  <circle cx="600" cy="252" r="4" fill="#818CF8"/>
-  <circle cx="978" cy="252" r="4" fill="#C084FC"/>
-  <rect x="365" y="340" width="470" height="112" rx="22" fill="#101629" stroke="url(#hybrid)" stroke-width="1.5"/>
-  <text x="600" y="385" fill="#F8FAFC" font-family="Inter,Segoe UI,sans-serif" font-size="25" font-weight="750" text-anchor="middle">Investigate  →  Build  →  Verify  →  Ship</text>
-  <text x="600" y="417" fill="#A5B4CC" font-family="Inter,Segoe UI,sans-serif" font-size="14" text-anchor="middle">One clear path from idea to evidence-backed change</text>
-  <text x="600" y="488" fill="#64748B" font-family="Inter,Segoe UI,sans-serif" font-size="12" letter-spacing="2" text-anchor="middle">OPEN SOURCE  ·  MODULAR  ·  BUILT FOR REAL-WORLD REPOS</text>
+  <path d="M148 462H1052" stroke="#485574" stroke-opacity=".7" stroke-width="2"/>
+  <path d="M148 462H1052" stroke="url(#accent)" stroke-opacity=".7" stroke-width="2"/>
+  <circle class="signal" cx="148" cy="462" r="7" fill="#67E8F9" filter="url(#soft-glow)"/>
+
+  <g font-family="Inter,Segoe UI,sans-serif">
+    <rect x="82" y="321" width="236" height="116" rx="18" fill="url(#panel)" stroke="#22D3EE" stroke-opacity=".5"/>
+    <circle cx="112" cy="358" r="5" fill="#22D3EE"/>
+    <text x="132" y="363" fill="#67E8F9" font-size="12" font-weight="700" letter-spacing="1.5">01 / CONTEXT</text>
+    <text x="108" y="403" fill="#F1F5F9" font-size="18" font-weight="650">Investigate</text>
+
+    <rect x="354" y="321" width="236" height="116" rx="18" fill="url(#panel)" stroke="#818CF8" stroke-opacity=".55"/>
+    <circle cx="384" cy="358" r="5" fill="#818CF8"/>
+    <text x="404" y="363" fill="#A5B4FC" font-size="12" font-weight="700" letter-spacing="1.5">02 / INTENT</text>
+    <text x="380" y="403" fill="#F1F5F9" font-size="18" font-weight="650">Plan</text>
+
+    <rect x="626" y="321" width="236" height="116" rx="18" fill="url(#panel)" stroke="#A78BFA" stroke-opacity=".55"/>
+    <circle cx="656" cy="358" r="5" fill="#A78BFA"/>
+    <text x="676" y="363" fill="#C4B5FD" font-size="12" font-weight="700" letter-spacing="1.5">03 / CHANGE</text>
+    <text x="652" y="403" fill="#F1F5F9" font-size="18" font-weight="650">Build</text>
+
+    <rect x="898" y="321" width="220" height="116" rx="18" fill="url(#panel)" stroke="#C084FC" stroke-opacity=".6"/>
+    <circle cx="928" cy="358" r="5" fill="#C084FC"/>
+    <text x="948" y="363" fill="#E9D5FF" font-size="12" font-weight="700" letter-spacing="1.5">04 / EVIDENCE</text>
+    <text x="924" y="403" fill="#F1F5F9" font-size="18" font-weight="650">Verify</text>
+  </g>
+
+  <path d="M82 483H1118" stroke="#FFFFFF" stroke-opacity=".1"/>
+  <text x="82" y="517" fill="#8491A9" font-family="Inter,Segoe UI,sans-serif" font-size="13">Small diffs</text>
+  <circle cx="166" cy="512" r="2" fill="#526079"/>
+  <text x="184" y="517" fill="#8491A9" font-family="Inter,Segoe UI,sans-serif" font-size="13">Real tests</text>
+  <circle cx="270" cy="512" r="2" fill="#526079"/>
+  <text x="288" y="517" fill="#8491A9" font-family="Inter,Segoe UI,sans-serif" font-size="13">Runtime proof</text>
+  <text x="1118" y="517" fill="#66748D" font-family="Inter,Segoe UI,sans-serif" font-size="12" letter-spacing="1.6" text-anchor="end">OPEN SOURCE / MODULAR / ENGINEER-LED</text>
 </svg>
