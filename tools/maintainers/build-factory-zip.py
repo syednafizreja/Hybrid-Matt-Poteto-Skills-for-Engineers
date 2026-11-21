@@ -68,6 +68,29 @@ def write_archive(files):
             archive.writestr(info, path.read_bytes())
 
 
+def archive_is_current(files):
+    if not ARCHIVE_PATH.is_file():
+        return False
+
+    expected_names = {
+        f"{PACKAGE_ROOT}/{path.relative_to(ROOT).as_posix()}"
+        for path in files
+    }
+    try:
+        with zipfile.ZipFile(ARCHIVE_PATH) as archive:
+            if archive.testzip() is not None or set(archive.namelist()) != expected_names:
+                return False
+            for path in files:
+                name = f"{PACKAGE_ROOT}/{path.relative_to(ROOT).as_posix()}"
+                info = archive.getinfo(name)
+                expected_mode = 0o755 if path.suffix in {".sh", ".mjs"} else 0o644
+                if archive.read(name) != path.read_bytes() or (info.external_attr >> 16) & 0o777 != expected_mode:
+                    return False
+    except (OSError, zipfile.BadZipFile):
+        return False
+    return True
+
+
 def verify_archive(bash):
     with zipfile.ZipFile(ARCHIVE_PATH) as archive:
         if archive.testzip() is not None:
@@ -110,7 +133,8 @@ def main():
     args = parser.parse_args()
 
     files = package_files()
-    write_archive(files)
+    if not archive_is_current(files):
+        write_archive(files)
     count = verify_archive(args.bash)
     print(f"ZIP verified: {ARCHIVE_PATH} ({ARCHIVE_PATH.stat().st_size:,} bytes, {count} files)")
 
