@@ -23,6 +23,10 @@ The rewritten prompt names all of these:
 
 Return the prompt for repair when any of these is missing: unit, boundary condition, tolerance, or output path.
 
+## Local library
+
+Open `../skill-sync/references/local-grok-skills.md` and follow the `prompt-engineer` rows before rewriting the prompt.
+
 ## Shape
 
 1. Imperative lines. One action per line.

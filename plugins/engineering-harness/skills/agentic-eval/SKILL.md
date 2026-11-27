@@ -16,6 +16,10 @@ Use this to judge an analysis, a paper claim, or an agent trace. The judge score
 4. Writer fixes those items and nothing else.
 5. Stop when the rubric gate passes, or when the same failure remains after two fixes. Report the remaining failure.
 
+## Local library
+
+Open `../skill-sync/references/local-grok-skills.md` and follow the `agentic-eval` rows before scoring.
+
 ## Physics judge
 
 Check, in order: units, boundary conditions, residual or energy, mesh convergence when the quantity needs it, and whether the claim is stronger than the evidence.

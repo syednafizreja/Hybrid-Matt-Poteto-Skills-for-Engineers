@@ -23,6 +23,12 @@ Use this to update the six hybrids from pinned upstream skills. The six are `res
 5. Do not add a seventh always-loaded skill unless the user asks for a new name.
 6. Done when the proposal lists the upstream path, the local file, and the local rule the hunk must not weaken.
 
+## Local library
+
+1. Read `references/local-grok-skills.md` when a task names an older skill.
+2. Open `%USERPROFILE%\.grok\skills\<name>\SKILL.md` for that row.
+3. Do not open a second skill home. The Grok copy is the one to read.
+
 ## Cache
 
 The default cache is `$env:LOCALAPPDATA\agentic-harness-cache`. That folder is outside this git repo. Do not move it into `.grok/skills`, `skills/`, or a plugin scan path.

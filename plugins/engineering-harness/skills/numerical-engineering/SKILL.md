@@ -27,6 +27,10 @@ Use this for OpenSeesPy, CalculiX, Gmsh, NumPy, SciPy, PyTorch, and pytest. Abso
 3. Report the command, the pass or fail line, and the quantity with its unit.
 4. Done when the new check passes and the existing checks for that model still pass.
 
+## Local library
+
+Open `../skill-sync/references/local-grok-skills.md` and follow the `numerical-engineering` rows before writing a new procedure.
+
 ## Review
 
 1. Compare the diff with the spec or the bug report.

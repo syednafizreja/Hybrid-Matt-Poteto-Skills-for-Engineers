@@ -28,6 +28,7 @@ SI units. A result counts when a check passes and the number is in a file.
 - Search, then read the matching lines. Load one skill and one reference for the current step.
 - Checklists live in `plugins/engineering-harness/skills/*/references/`.
 - Load this plugin once, through `[plugins].paths`. Do not also add that folder under `[skills].paths`.
+- Local skills live in `%USERPROFILE%\.grok\skills`. The index is `plugins/engineering-harness/skills/skill-sync/references/local-grok-skills.md`. Do not read a second skill home.
 
 ## Prose
 

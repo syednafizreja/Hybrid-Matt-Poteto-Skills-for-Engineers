@@ -22,7 +22,7 @@ const CONFIG = {
   bannedPatterns: [
     {
       name: "narrating-ai-comment",
-      regex: /\/\/\s*(?:TODO\(ai\)|NOTE:\s*(?:user|lauren|matt|claude|grok)\s+said|we\s+(?:changed|updated|removed|fixed)\s+this\s+because\s+(?:earlier|previously))/i,
+      regex: /\/\/\s*(?:TODO\(ai\)|NOTE:\s*(?:user|lauren|matt|grok)\s+said|we\s+(?:changed|updated|removed|fixed)\s+this\s+because\s+(?:earlier|previously))/i,
       message: "Remove historical/conversational AI comments; put durable decisions in docs/adr/."
     },
     {

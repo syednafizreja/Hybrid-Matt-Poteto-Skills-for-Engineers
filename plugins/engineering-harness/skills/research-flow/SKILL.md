@@ -25,6 +25,10 @@ Use this for a literature question, a modeling choice, or a spec. Absorbed trigg
 1. Write the acceptance check: command, tolerance, unit, and output file.
 2. Split a job that does not fit one session. Each slice ends in a command that can fail.
 
+## Local library
+
+Open `../skill-sync/references/local-grok-skills.md` and follow the `research-flow` rows before writing a new procedure.
+
 ## Note
 
 1. Write one markdown note in the repo folder that already holds notes.

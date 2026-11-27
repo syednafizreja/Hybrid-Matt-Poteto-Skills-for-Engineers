@@ -28,6 +28,10 @@ Use this for a Q1 or Q2 mechanics manuscript, a section, or a response to review
 2. Cite only entries in the repo bibliography. Do not invent a DOI, page, author, or number.
 3. Done when the PDF builds and each result number matches a file.
 
+## Local library
+
+Open `../skill-sync/references/local-grok-skills.md` and follow the `paper-writing` rows before drafting from scratch.
+
 ## Response to reviewers
 
 1. One reviewer comment per block.

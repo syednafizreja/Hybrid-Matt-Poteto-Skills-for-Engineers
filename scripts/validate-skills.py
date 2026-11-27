@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -37,9 +38,15 @@ def main() -> int:
     if EM_DASH in "\n".join(agent_lines):
         errors.append("AGENTS.md contains an em dash")
 
-    claude = ROOT / "CLAUDE.md"
-    if len(lines(claude)) > 10:
-        errors.append(f"CLAUDE.md has {len(lines(claude))} lines (max 10)")
+    banned = re.compile("".join(chr(c) for c in (99, 108, 97, 117, 100, 101)), re.IGNORECASE)
+    text_suffixes = {".md", ".py", ".json", ".yml", ".yaml", ".ps1", ".mjs", ".toml", ".txt"}
+    for path in ROOT.rglob("*"):
+        if ".git" in path.parts or not path.is_file():
+            continue
+        if path.suffix.lower() not in text_suffixes:
+            continue
+        if banned.search(path.read_text(encoding="utf-8")):
+            errors.append(f"{path.relative_to(ROOT)} contains the retired vendor name")
 
     for rel in JSON_FILES:
         path = ROOT / rel

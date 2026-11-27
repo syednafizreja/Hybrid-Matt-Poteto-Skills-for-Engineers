@@ -42,9 +42,9 @@ grok plugin install .\plugins\engineering-harness --trust
 
 Use one of those two methods, not both, or the six skills load twice.
 
-## Claude Code and Copilot
+## Local Grok skills
 
-`CLAUDE.md` points at `AGENTS.md`. Point Claude or Copilot at `plugins/engineering-harness/skills` if that tool needs an explicit skill path. Do not also copy those folders into `~/.claude/skills` or `~/.grok/skills`.
+Personal skills live in `%USERPROFILE%\.grok\skills`. The harness index is `plugins/engineering-harness/skills/skill-sync/references/local-grok-skills.md`. Do not copy those folders into this repo, and do not point Grok at a second skill tree.
 
 ## Upstream diffs
 
