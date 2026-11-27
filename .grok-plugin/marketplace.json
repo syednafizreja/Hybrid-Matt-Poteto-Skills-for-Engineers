@@ -1,0 +1,26 @@
+{
+  "name": "agentic-harness-for-engineers",
+  "description": "Computational mechanics skills for research, verified analysis, papers, prompts, evaluation, and upstream sync.",
+  "owner": {
+    "name": "Syed Nafiz Reja Hasib",
+    "email": "syednafiz2811@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "engineering-harness",
+      "description": "Six skills for computational structural engineering.",
+      "version": "1.0.0",
+      "source": {
+        "type": "local",
+        "path": "./plugins/engineering-harness"
+      },
+      "keywords": [
+        "finite-element",
+        "opensees",
+        "calculix",
+        "verification",
+        "papers"
+      ]
+    }
+  ]
+}

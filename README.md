@@ -1,246 +1,60 @@
-<div align="center">
-  <h1>Agentic Harness for Engineers</h1>
-  <p><strong>Optimized for Engineers by Engineers</strong></p>
-  <p>Model-agnostic workflows to plan, build, and prove software across teams and tools.</p>
-  <p>
-    <a href="#licensing-and-attribution"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-14b8a6.svg"></a>
-    <img alt="Model agnostic" src="https://img.shields.io/badge/model-agnostic-8b5cf6.svg">
-    <img alt="Evidence first" src="https://img.shields.io/badge/approach-evidence--first-0ea5e9.svg">
-    <a href="https://agentskills.io"><img alt="Agent Skills compatible" src="https://img.shields.io/badge/Agent%20Skills-compatible-2563eb.svg"></a>
-  </p>
-</div>
+# Agentic harness for engineers
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/syednafizreja/agentic-harness-for-engineers/main/assets/agentic-harness-hero.svg" alt="Agentic Harness for Engineers: Optimized for Engineers by Engineers." width="100%">
-</p>
+Six skills for computational structural engineering. They load as one Grok plugin. Upstream skill repos stay in a local cache and are not copied into git.
 
-> **For engineers:** investigate real code, make focused changes, and prove behavior before shipping.
+## Skills
 
-## Why this harness
+| Skill | Use |
+| --- | --- |
+| `research-flow` | Frame a question, pin sources, write a checkable spec |
+| `numerical-engineering` | OpenSeesPy, CalculiX, Gmsh, Python, pytest, solver bugs |
+| `paper-writing` | Q1 or Q2 manuscript, Tectonic or LaTeX, reviewer replies |
+| `prompt-engineer` | Units, boundary conditions, tolerances, output contract |
+| `agentic-eval` | Judge units, convergence, and claim-to-file alignment |
+| `skill-sync` | Diff pinned upstream skills and propose a small local edit |
 
-Agentic Harness for Engineers combines precise specifications, test-first implementation, verifiable sequencing, isolated worktrees, and real runtime proof into one portable workflow for any AI coding agent. Its practices build on work from Matt Pocock and Lauren Tan.
+Long checklists sit in each skill's `references/` directory. `AGENTS.md` is the always-on rule file (SI units, verification, prose).
 
-The result is a portable workflow for any AI coding agent: a seven-command delivery loop, a compact 12-skill core, and five enforcement layers. Layers 1–3 provide hard architecture, CI, and runtime checks; Layers 4–5 add domain steering and adversarial review.
+## Grok Build (Windows)
 
-## The seven-command loop
+This machine loads the plugin by path, inside the user profile, so Grok trusts it without a symlink and without a second copy:
 
-| Command | Merged strengths | What it does |
-|---|---|---|
-| `/hybrid-init` | Matt setup skills + PStack setup + verification bootstrap | Detects the project stack and Git remote; bootstraps `AGENTS.md`, issue tracking, `FEATURE_MAP.md`, and `verify-app`. |
-| `/hybrid-investigate` | Matt diagnosing-bugs + Lauren `/how` and `/why` | Reads code, history, and architecture docs before forming a hypothesis; checks for an existing fix and reproduces bugs. |
-| `/hybrid-grill` | Matt grill-with-docs/domain-modeling/wayfinder + Lauren `/interrogate` | Resolves ambiguity, updates `GLOSSARY.md` and ADRs, and challenges high-stakes designs. |
-| `/hybrid-plan` | Matt to-spec/to-tickets + Lauren sequence-verifiable-units | Turns an agreed design into a GitHub spec and vertical tickets sized for a `<150k`-token session and atomic PR. |
-| `/hybrid-build` | Matt implement-spec/TDD + PStack poteto-mode/verify-app | Executes work in isolated `.worktrees/`, uses behavioral TDD, verifies the real app, and removes diff slop. |
-| `/hybrid-ship` | Matt code-review/PR + PStack four-axis review | Reviews spec fidelity, architecture, runtime proof, and security; checks CI and classifies Merge Danger. |
-| `/hybrid-retro` | Matt retro/architecture improvement + blind skill evaluation | Promotes recurring review feedback into hard checks and improves skills through blind evaluation. |
-
-**Supporting skills:** `verify-app`, `codebase-design`, `tdd`, `unslop`, and `handoff`.
-
-## Five-layer enforcement
-
-1. **Architecture:** feature colocation, deep modules, and narrow public interfaces.
-2. **Static checks:** type, lint, test, and import-boundary rules that make CI fail on violations.
-3. **Runtime proof:** exercise the real app or integration surface using `FEATURE_MAP.md`.
-4. **Domain steering:** `AGENTS.md`, `GLOSSARY.md`, ADRs, and coding standards.
-5. **Adversarial review:** `/hybrid-ship` checks scope, architecture, runtime evidence, and security.
-
-## High-leverage habits for token savings and quality
-
-- Start a fresh session before context gets bloated; use `/handoff` to carry verified facts into it.
-- Keep always-loaded `AGENTS.md` concise and link detailed guidance in `docs/`; read only what applies to the task.
-- Disable unused MCP servers and noisy watchers. The bundled VS Code settings already exclude `.worktrees/`, build outputs, and `node_modules/` from watchers.
-- Use Plan mode before large edits and grant tools only the access the task needs.
-- Let deterministic checks catch mechanical failures; reserve high reasoning effort for runtime proof, hard bugs, security, and reviews.
-- Batch routine issue triage and feedback into scheduled runs instead of constant ping-pong.
-
-## Install
-
-### Any supported agent
-
-Install the portable Agent Skills catalog and choose the agents you use:
-
-```bash
-npx skills@latest add syednafizreja/agentic-harness-for-engineers
+```toml
+[plugins]
+paths = ["C:/Users/ASUS/repos/agentic-harness-for-engineers/plugins/engineering-harness"]
+enabled = ["engineering-harness"]
 ```
 
-Requires Node.js 22.20 or later. Add `--all` to install every skill to every supported agent:
+Do not also set `[skills].paths` to that folder. Check with:
 
-```bash
-npx skills@latest add syednafizreja/agentic-harness-for-engineers --all
+```powershell
+grok plugin validate .\plugins\engineering-harness
+grok inspect
+python scripts\validate-skills.py
 ```
 
-For a selective install, add `--skill <skill>` and `--agent <agent>` using IDs from the [live agent list](https://github.com/vercel-labs/skills/blob/main/docs/agents.md). Add `-g` for a global install.
+Another machine can add the marketplace and install the same plugin:
 
-### Optional: VS Code + Grok Bot bundle
-
-The portable catalog works across agents. For a ready-to-use VS Code + Grok Bot setup, save the unzipped [`agentic-harness-for-engineers-v3.zip`](agentic-harness-for-engineers-v3.zip) as your permanent template repository. Open it in VS Code and push it to a GitHub repository you own.
-
-Install into any project repository from Git Bash or the VS Code terminal:
-
-```bash
-cd /path/to/your/project
-chmod +x /path/to/agentic-harness-for-engineers/install.sh
-/path/to/agentic-harness-for-engineers/install.sh .
-./verify-setup.sh
+```powershell
+grok plugin marketplace add .
+grok plugin install .\plugins\engineering-harness --trust
 ```
 
-Initialize once per project with `/hybrid-init`, then run `/hybrid-grill` -> `/hybrid-plan` -> `/hybrid-build` -> `/hybrid-ship` -> `/hybrid-retro` in Grok Bot or Grok Build.
+Use one of those two methods, not both, or the six skills load twice.
 
-### Make the bundle your GitHub template
+## Claude Code and Copilot
 
-Unzip the factory, then push the folder to a repository you own:
+`CLAUDE.md` points at `AGENTS.md`. Point Claude or Copilot at `plugins/engineering-harness/skills` if that tool needs an explicit skill path. Do not also copy those folders into `~/.claude/skills` or `~/.grok/skills`.
 
-```bash
-git init -b main
-git add .
-git commit -m "Create Grok Bot engineering template"
-git remote add origin https://github.com/<you>/<repo>.git
-git push -u origin main
+## Upstream diffs
+
+```powershell
+.\scripts\sync-upstreams.ps1
+.\scripts\sync-upstreams.ps1 -CacheDir D:\cache\agentic-harness-cache
 ```
 
-Enable **Settings -> General -> Template repository**. New projects can use the template directly; existing projects use the installer above.
+The default cache is `%LOCALAPPDATA%\agentic-harness-cache`. Pins live in `upstream/sources.json`. The script prints `SKILL.md` diffs and does not edit the hybrids. `skill-sync` decides what, if anything, to cherry-pick.
 
-## Optional VS Code + Grok Bot ZIP (34 files)
+## Check
 
-```text
-agentic-harness-for-engineers/
-├── README.md
-├── install.sh
-├── verify-setup.sh
-├── AGENTS.md
-├── CLAUDE.md
-├── GLOSSARY.md
-├── FEATURE_MAP.md
-├── .vscode/
-│   ├── settings.json
-│   └── tasks.json
-├── .grok/skills/
-│   ├── hybrid-init/SKILL.md
-│   ├── hybrid-investigate/SKILL.md
-│   ├── hybrid-grill/SKILL.md
-│   ├── hybrid-plan/SKILL.md
-│   ├── hybrid-build/SKILL.md
-│   ├── hybrid-ship/SKILL.md
-│   ├── hybrid-retro/SKILL.md
-│   ├── verify-app/SKILL.md
-│   ├── codebase-design/SKILL.md
-│   ├── tdd/SKILL.md
-│   ├── unslop/SKILL.md
-│   └── handoff/SKILL.md
-├── scripts/check-boundaries.mjs
-├── docs/
-│   ├── adr/0000-adr-template.md
-│   └── agents/
-│       ├── codingstandards.md
-│       ├── issue-tracker.md
-│       ├── triage-labels.md
-│       ├── model-routing.md
-│       └── eval-rubric-template.md
-├── grokbot-cloud/
-│   ├── 01-grokbot-private-skills-import.md
-│   ├── 02-bot-roster-profiles.md
-│   ├── 03-routines.md
-│   └── 04-trust-ladder.md
-└── .github/
-    ├── pull_request_template.md
-    └── workflows/deterministic-ci.yml
-```
-
-The cloud routines are optional. The local VS Code workflow works without Grok Bot Cloud.
-
-## Upstream updates
-
-The full repository checks Matt Pocock and Open PStack weekly and opens a draft PR for human review; it never auto-merges. The PR also refreshes this 34-file ZIP. See the [sync policy](https://github.com/syednafizreja/agentic-harness-for-engineers/blob/main/.github/UPSTREAM_SYNC.md). Run `npx skills@latest update` to update CLI-installed skills.
-
-## Licensing and attribution
-
-Agentic Harness for Engineers is MIT licensed. Adapted portions from [Matt Pocock's skills](https://github.com/mattpocock/skills) and [Open PStack](https://github.com/ericlitman/open-pstack) retain their MIT notices. The full repository also keeps these notices in `THIRD_PARTY_NOTICES.md`.
-
-<details>
-<summary>MIT license texts included with the factory</summary>
-
-<!-- HYBRID-THIRD-PARTY-NOTICES:BEGIN -->
-### Agentic Harness for Engineers
-
-```text
-MIT License
-
-Copyright (c) 2026 Syed Nafiz Reja
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
-### Matt Pocock skills
-
-Source: <https://github.com/mattpocock/skills>
-
-```text
-MIT License
-
-Copyright (c) 2026 Matt Pocock
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
-### Open PStack
-
-Source: <https://github.com/ericlitman/open-pstack>
-
-```text
-MIT License
-
-Copyright (c) 2026 Lauren Tan
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-<!-- HYBRID-THIRD-PARTY-NOTICES:END -->
-
-</details>
+`python scripts/validate-skills.py` enforces frontmatter, a description of at most 25 words, `SKILL.md` of at most 150 lines, `AGENTS.md` of at most 70 lines, valid JSON manifests, and no em dash in `AGENTS.md` or the skills.

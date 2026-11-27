@@ -1,69 +1,42 @@
-# Agentic Harness for Engineers — Operating Rules
+# Computational engineering harness
 
-This repository runs a unified **Matt Pocock + Lauren Tan** engineering workflow inside **VS Code + Grok Bot**.
-Our core objective: **less code, deeper modules, hard deterministic guardrails, real runtime proof, and fearless parallelism**.
+SI units. A result counts when a check passes and the number is in a file.
 
----
+## Units and models
 
-## 1. The 5-Layer Enforcement Stack (Strongest to Softest)
+- State the unit on every input, tolerance, and result. Use SI: N, m, Pa, kg, s, K.
+- Name the element, mesh, constitutive model, boundary conditions, and solver before a run.
+- Record the command, the commit, and the result file for every reported number.
 
-Soft rules rot as repositories grow. Push every recurring invariant as far **up** this stack as possible:
+## Verification
 
-1. **Layer 1 — Architecture & Feature Colocation (Hard):** Organize code into feature-colocated directories (`src/features/<feature>/`) and **deep modules** (`codebase-design`) with small, stable public interfaces. Make the shortest path for an agent the best path.
-2. **Layer 2 — Static Analysis & Boundary CI (Hard — Makes CI Red):** Strict compiler/type checks, linters, and `scripts/check-boundaries.mjs` (enforces directory import isolation and bans agent footguns & narrating comments).
-3. **Layer 3 — Real-Artifact Runtime Verification (Hard — Proves Behavior):** Execute the real application via `.grok/skills/verify-app/SKILL.md` and `FEATURE_MAP.md` (Playwright/CDP, CLI, traces, or integration tests). *"It compiles"* is **not** proof.
-4. **Layer 4 — Soft Steering & Domain Docs:** `AGENTS.md`, `GLOSSARY.md`, `FEATURE_MAP.md`, `docs/adr/`, and `docs/agents/codingstandards.md`.
-5. **Layer 5 — Adversarial Multi-Axis Review:** `/hybrid-ship` (Spec + Architecture + Runtime Proof + Security) with cross-model review on high-stakes changes.
+- Read the deck, the script, and the result file before explaining a number.
+- Reproduce a known case before a new claim: patch test, equilibrium, energy balance, or a closed form.
+- Mesh studies use at least three refinements. Report the quantity, the meshes, and the change.
+- Python changes include pytest. A finite-element change includes a numerical check in the same diff.
+- OpenSeesPy, CalculiX, Gmsh, NumPy, SciPy, and PyTorch runs pin the environment and write outputs beside the script.
 
----
+## Stack
 
-## 2. Non-Negotiable Engineering Principles
+- One public interface per analysis module. Hide the solver call behind it.
+- This repo's check is `python scripts/validate-skills.py`. A mechanics repo's check is its pytest file plus the solver log.
+- Proof is the test output or the solver log.
+- Review units, convergence, the spec, and whether the prose matches the files.
 
-- **Read Before Guessing (`/hybrid-investigate`):** Never claim a "smoking gun" or guess a root cause without reading the affected files, Git history, and live runtime behavior first.
-- **Prove It Works:** Verify fixes and features on the **exact surface** where the user experiences them. Include authentic failing -> passing output in the PR.
-- **Stay in the Smart Zone (`<150k` tokens):** Keep single-task sessions small and focused. If work exceeds one clean session, run `/hybrid-plan` to slice into `<150k`-token tracer-bullet tickets and run `/hybrid-build` in isolated Git worktrees (`.worktrees/`).
-- **Use high-signal context:** Skip filler; state exact paths, commands, decisions, and diffs. Read `GLOSSARY.md` and `FEATURE_MAP.md` before broad exploration.
-- **Spend tokens deliberately:** Run deterministic type, lint, test, and boundary checks before asking an agent to reason about failures they can detect directly.
-- **Sequence into Verifiable Units:** Ship small, atomic, revertible PRs (typically 50–600 lines) rather than monolithic diffs so `git history` stays clean and rollbacks are trivial.
-- **Subtract Before Adding (`unslop`):** Delete dead paths, duplicate helpers, and narrating AI comments instead of stacking defensive workarounds.
-- **Candor Over Sycophancy:** If a proposed scope or design does not earn its place, push back directly with concrete trade-offs.
-- **Pareto-Frontier Effort Discipline (`docs/agents/model-routing.md`):** Use **medium** reasoning effort for codebase exploration and routine implementation; escalate to **high** effort only for runtime verification, hard bug diagnosis, security review, and blind skill evals.
-- **Commit Attribution:** Add no automated co-author trailers; include attribution only when the user explicitly requests it.
+## Token use
 
----
+- Search, then read the matching lines. Load one skill and one reference for the current step.
+- Checklists live in `plugins/engineering-harness/skills/*/references/`.
+- Load this plugin once, through `[plugins].paths`. Do not also add that folder under `[skills].paths`.
 
-## 3. Unified Slash-Command Workflow
+## Prose
 
-- `/hybrid-init` — One-time repo bootstrap: detects stack, wires issue tracker, populates `FEATURE_MAP.md` & `verify-app`.
-- `/hybrid-investigate` — Root-cause investigation (`/how` + `/why` + live repro + "already fixed on `main`?" check).
-- `/hybrid-grill` — Interactive alignment interview; sharpens ubiquitous language in `GLOSSARY.md` and records `docs/adr/`.
-- `/hybrid-plan` — Converts an agreed plan into a GitHub Spec + `<150k`-token tracer-bullet sub-issues with blocking edges.
-- `/hybrid-build` — Executes tickets in isolated `.worktrees/` using `/tdd`, verifies via `verify-app`, and cleans with `/unslop`.
-- `/hybrid-ship` — Runs 4-axis adversarial review, verifies CI + `check-boundaries.mjs`, and opens a Merge Danger PR.
-- `/hybrid-retro` — Turns recurring review comments into Layer-2 CI rules, refactors hotspots, and runs blind skill evals.
-- `/handoff` — Compacts a session into a crisp handoff file when approaching the `150k` smart-zone ceiling.
+- Short sentences. The claim and the evidence share a paragraph.
+- State the modeling limit in the same place as the result.
+- Use a period, a comma, a colon, or parentheses. Do not use an em dash.
 
----
+## Diffs
 
-## 4. Mandatory Deterministic Verification Command
-
-Update this command in `/hybrid-init` to match your repository's stack:
-```bash
-# Node/TypeScript default:
-npm run typecheck --if-present && npm run lint --if-present && npm test --if-present && node scripts/check-boundaries.mjs
-
-# Python default:
-# ruff check . && mypy . && pytest -q && node scripts/check-boundaries.mjs
-```
-No task is complete until both this deterministic command **and** the matching runtime check in `.grok/skills/verify-app/SKILL.md` pass.
-
----
-
-## 5. Merge Danger Classification (Required on Every PR)
-
-Every Pull Request must declare:
-1. **Door Type:**
-   - `Two-Way Door` — Easily reversible via `git revert`; zero destructive state migrations or external side effects.
-   - `One-Way Door` — Schema/data migration, auth/permissions, billing, secrets/infra, CI/guardrail changes, or external notifications.
-2. **Blast Radius:** `Small` | `Medium` | `Large`
-3. **Runtime Proof:** Exact test diff (`fail -> pass`), CLI trace, or UI screenshot proving runtime correctness.
+- Put the failing check in place before changing the model.
+- Delete a dead path before adding a helper.
+- A pull request names the door (two-way or one-way), the blast radius (small, medium, or large), and the command that proves the result.

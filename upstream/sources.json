@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "cache_dir_name": "agentic-harness-cache",
+  "hybrids": [
+    "research-flow",
+    "numerical-engineering",
+    "paper-writing",
+    "prompt-engineer",
+    "agentic-eval",
+    "skill-sync"
+  ],
+  "sources": [
+    {
+      "repository": "obra/superpowers",
+      "git": "https://github.com/obra/superpowers.git",
+      "last_synced_sha": "22f0b463e7a5e579904dd6211a520321035526f7",
+      "skills": [
+        {
+          "path": "skills/brainstorming/SKILL.md",
+          "maps_to": "research-flow",
+          "note": "Problem framing only."
+        },
+        {
+          "path": "skills/writing-plans/SKILL.md",
+          "maps_to": "research-flow",
+          "note": "Slice a spec into checks."
+        },
+        {
+          "path": "skills/test-driven-development/SKILL.md",
+          "maps_to": "numerical-engineering",
+          "note": "Failing check before the fix."
+        },
+        {
+          "path": "skills/systematic-debugging/SKILL.md",
+          "maps_to": "numerical-engineering",
+          "note": "Read the failing log before a cause."
+        },
+        {
+          "path": "skills/verification-before-completion/SKILL.md",
+          "maps_to": "numerical-engineering",
+          "note": "Proof command before done."
+        }
+      ]
+    },
+    {
+      "repository": "mattpocock/skills",
+      "git": "https://github.com/mattpocock/skills.git",
+      "last_synced_sha": "6f7f7831a625f040a8e06a0e7954826b87ce775a",
+      "skills": [
+        {
+          "path": "skills/productivity/grill-me/SKILL.md",
+          "maps_to": "research-flow",
+          "note": "Interview until units and boundaries are named."
+        },
+        {
+          "path": "skills/engineering/grill-with-docs/SKILL.md",
+          "maps_to": "research-flow",
+          "note": "Grill against the repo docs."
+        },
+        {
+          "path": "skills/engineering/to-spec/SKILL.md",
+          "maps_to": "research-flow",
+          "note": "Acceptance checks."
+        },
+        {
+          "path": "skills/engineering/wayfinder/SKILL.md",
+          "maps_to": "research-flow",
+          "note": "Choose the next check."
+        },
+        {
+          "path": "skills/engineering/tdd/SKILL.md",
+          "maps_to": "numerical-engineering",
+          "note": "Local failing test."
+        },
+        {
+          "path": "skills/engineering/diagnosing-bugs/SKILL.md",
+          "maps_to": "numerical-engineering",
+          "note": "Diagnosis loop."
+        }
+      ]
+    },
+    {
+      "repository": "anthropics/skills",
+      "git": "https://github.com/anthropics/skills.git",
+      "last_synced_sha": "e4bb5d960d87126ff3b3a8af1a104b7db67560ba",
+      "skills": [
+        {
+          "path": "skills/skill-creator/SKILL.md",
+          "maps_to": "skill-sync",
+          "note": "Frontmatter and description length."
+        },
+        {
+          "path": "skills/docx/SKILL.md",
+          "maps_to": "paper-writing",
+          "note": "Document tooling only. Manuscript rules stay local."
+        },
+        {
+          "path": "skills/pdf/SKILL.md",
+          "maps_to": "paper-writing",
+          "note": "PDF reading and builds."
+        }
+      ]
+    },
+    {
+      "repository": "affaan-m/ECC",
+      "git": "https://github.com/affaan-m/ECC.git",
+      "last_synced_sha": "4adeee6732a12d1540f49a4d50a38ce8c97f9a53",
+      "skills": [
+        {
+          "path": "skills/scientific-thinking-literature-review/SKILL.md",
+          "maps_to": "research-flow",
+          "note": "Literature review checks."
+        },
+        {
+          "path": "skills/research-ops/SKILL.md",
+          "maps_to": "research-flow",
+          "note": "Source tracking."
+        },
+        {
+          "path": "skills/python-testing/SKILL.md",
+          "maps_to": "numerical-engineering",
+          "note": "pytest layout."
+        },
+        {
+          "path": "skills/pytorch-patterns/SKILL.md",
+          "maps_to": "numerical-engineering",
+          "note": "Tensor and seed hygiene."
+        },
+        {
+          "path": "skills/tdd-workflow/SKILL.md",
+          "maps_to": "numerical-engineering",
+          "note": "Red then green."
+        },
+        {
+          "path": "skills/verification-loop/SKILL.md",
+          "maps_to": "numerical-engineering",
+          "note": "Repeat the proof command."
+        },
+        {
+          "path": "skills/article-writing/SKILL.md",
+          "maps_to": "paper-writing",
+          "note": "Section order only."
+        },
+        {
+          "path": "skills/prompt-optimizer/SKILL.md",
+          "maps_to": "prompt-engineer",
+          "note": "Prompt contract."
+        },
+        {
+          "path": "skills/eval-harness/SKILL.md",
+          "maps_to": "agentic-eval",
+          "note": "Judge loop."
+        },
+        {
+          "path": "skills/agent-eval/SKILL.md",
+          "maps_to": "agentic-eval",
+          "note": "Trace scoring."
+        },
+        {
+          "path": "skills/continuous-learning/SKILL.md",
+          "maps_to": "skill-sync",
+          "note": "What to keep after a session."
+        },
+        {
+          "path": "skills/skill-stocktake/SKILL.md",
+          "maps_to": "skill-sync",
+          "note": "Inventory before adding a skill."
+        }
+      ]
+    }
+  ]
+}

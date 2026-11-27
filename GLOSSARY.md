@@ -1,20 +1,10 @@
-# Domain Glossary (Ubiquitous Language)
+# Glossary
 
-Use exact canonical terms across code, schemas, UI, tests, `FEATURE_MAP.md`, and prompts.
-
-Maintained inline during `/hybrid-grill`.
-
-## Core Entities
-
-| Canonical Term | Definition | Avoid / Deprecated Synonyms | Feature Directory (`src/features/...`) |
-| :--- | :--- | :--- | :--- |
-| _Example: Workspace_ | _Top-level tenant owning projects and bots._ | _Org, Account, Teams_ | _`src/features/workspace/`_ |
-
-## Lifecycle States
-
-| Entity | State | Meaning | Valid Transitions |
-| :--- | :--- | :--- | :--- |
-| _Example: Spec_ | _`draft`_ | _Under active grilling; not yet ticketed._ | _`draft` -> `approved`_ |
-
-## Domain Invariants
-- List invariants that must always hold and the hard check that enforces each one.
+| Term | Meaning |
+| --- | --- |
+| Hybrid | One of the six skills in `plugins/engineering-harness/skills` |
+| Pin | `last_synced_sha` in `upstream/sources.json` |
+| Cache | Sparse upstream checkout under `%LOCALAPPDATA%\agentic-harness-cache` |
+| Proof | pytest output or a solver log for the quantity, with units |
+| Door | Two-way: revertible text or code. One-way: data, auth, secrets, or a public release |
+| Blast radius | Small, medium, or large, named on the pull request |

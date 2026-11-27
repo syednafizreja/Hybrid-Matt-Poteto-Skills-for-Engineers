@@ -1,11 +1,6 @@
-# Agent Instructions Pointer
+# Agent instructions
 
-Read and follow root `AGENTS.md` as the single source of truth for token efficiency, the 5-Layer Enforcement Stack, verification commands, and Merge Danger rules.
+Follow `AGENTS.md` in this repository.
 
-Key files:
-- `AGENTS.md`
-- `GLOSSARY.md`
-- `FEATURE_MAP.md`
-- `docs/agents/codingstandards.md`
-- `docs/agents/model-routing.md`
-- `docs/adr/`
+That file is the source of truth for units, verification, pytest, prose, and token use.
+Claude Code loads the same rules from this pointer.

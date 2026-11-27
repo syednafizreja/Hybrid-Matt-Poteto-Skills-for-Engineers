@@ -1,0 +1,19 @@
+{
+  "name": "engineering-harness",
+  "version": "1.0.0",
+  "description": "Research, verified finite-element work, papers, simulation prompts, physics evaluation, and upstream skill sync.",
+  "author": {
+    "name": "Syed Nafiz Reja Hasib",
+    "email": "syednafiz2811@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "finite-element",
+    "opensees",
+    "calculix",
+    "gmsh",
+    "verification",
+    "papers"
+  ],
+  "skills": "./skills"
+}

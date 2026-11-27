@@ -1,36 +1,13 @@
 {
   "name": "agentic-harness-for-engineers",
-  "version": "1.0.0",
-  "sources": [
-    "Agentic Harness workflow",
-    "mattpocock/skills",
-    "ericlitman/open-pstack"
-  ],
-  "guides": [
-    "docs/agents/eval-rubric-template.md",
-    "grokbot-cloud/01-grokbot-private-skills-import.md",
-    "grokbot-cloud/02-bot-roster-profiles.md",
-    "grokbot-cloud/03-routines.md",
-    "grokbot-cloud/04-trust-ladder.md"
-  ],
+  "version": "2.0.0",
+  "plugin": "plugins/engineering-harness",
   "skills": [
-    "hybrid",
-    "hybrid-init",
-    "hybrid-investigate",
-    "hybrid-grill",
-    "hybrid-plan",
-    "hybrid-build",
-    "hybrid-ship",
-    "hybrid-retro",
-    "verify-app",
-    "codebase-design",
-    "diagnosing-bugs",
-    "tdd",
-    "unslop",
-    "handoff",
-    "poteto-mode",
-    "setup-pstack",
-    "software-factory",
-    "setup-matt-pocock-skills"
+    "research-flow",
+    "numerical-engineering",
+    "paper-writing",
+    "prompt-engineer",
+    "agentic-eval",
+    "skill-sync"
   ]
 }
